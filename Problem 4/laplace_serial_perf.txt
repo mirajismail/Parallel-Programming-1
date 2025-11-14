@@ -1,0 +1,2017 @@
+
+Sorted summary for file /home/l/lcl_uotcscd71/lcl_uotcscd71s1405/omplaplace_serial/laplace
+----------------------------------------------
+
+   99.84 iteration.cpp:25
+ Percent |	Source code & Disassembly of laplace for cycles:u (25388 samples, percent: local period)
+--------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3      Disassembly of section .text:
+         :
+         : 5      00000000004037b0 <get_max_diff(ra::rarray<double, 2> const&, ra::rarray<double, 2> const&)>:
+         : 6      get_max_diff(ra::rarray<double, 2> const&, ra::rarray<double, 2> const&):
+         : 20     + Vprev[i][j-1]  +Vprev[i][j+1]);
+         : 21     }
+         :
+         : 23     double get_max_diff(const rmatrix<double>& a, const rmatrix<double>& b) {
+         : 24     double maxdiff = 0.0;
+         : 25     const size_t n = std::min(a.extent(0), b.extent(0));
+    0.00 :   4037b0: mov    0x20(%rsi),%rax
+    0.00 :   4037b4: mov    0x20(%rdi),%r10
+         : 21     const size_t m = std::min(a.extent(1), b.extent(1));
+    0.00 :   4037b8: mov    0x28(%rdi),%r8
+         : 20     const size_t n = std::min(a.extent(0), b.extent(0));
+    0.00 :   4037bc: cmp    %rax,%r10
+    0.00 :   4037bf: cmovg  %rax,%r10
+         : 21     const size_t m = std::min(a.extent(1), b.extent(1));
+    0.00 :   4037c3: mov    0x28(%rsi),%rax
+    0.00 :   4037c7: cmp    %rax,%r8
+    0.00 :   4037ca: cmovg  %rax,%r8
+         :
+         : 24     for (size_t i = 0; i < n; i++)
+    0.00 :   4037ce: test   %r10,%r10
+    0.00 :   4037d1: je     403827 <get_max_diff(ra::rarray<double, 2> const&, ra::rarray<double, 2> const&)+0x77>
+         : 24     for (size_t j = 0; j < m; j++)
+    0.00 :   4037d3: test   %r8,%r8
+    0.00 :   4037d6: je     403827 <get_max_diff(ra::rarray<double, 2> const&, ra::rarray<double, 2> const&)+0x77>
+    0.00 :   4037d8: mov    0x30(%rsi),%r11
+    0.01 :   4037dc: vmovq  0x96c(%rip),%xmm2        # 404150 <_IO_stdin_used+0x150>
+    0.00 :   4037e4: mov    0x30(%rdi),%rsi
+         : 23     for (size_t i = 0; i < n; i++)
+    0.00 :   4037e8: xor    %r9d,%r9d
+         : 19     double maxdiff = 0.0;
+    0.00 :   4037eb: vxorpd %xmm1,%xmm1,%xmm1
+    0.00 :   4037ef: nop
+         : 22     ra::rarray<double, 2>::private_at(long) const:
+         : 1675   friend class detail::ConstBracket<T, R-1, rarray<T, R>>;
+         : 1676   RA_FORCE_inline auto private_at(size_type i) -> typename detail::PointerArray<T, R-1>::type {
+         : 1677   return shape_.ptrs()[i];
+         : 1678   }
+         : 1679   RA_FORCE_inline auto private_at(size_type i) const -> typename detail::PointerArray<T, R-1>::type {
+         : 1680   return shape_.ptrs()[i];
+    0.05 :   4037f0: mov    (%r11,%r9,8),%rcx
+    0.00 :   4037f4: mov    (%rsi,%r9,8),%rdx
+         : 1683   get_max_diff(ra::rarray<double, 2> const&, ra::rarray<double, 2> const&):
+         : 24     for (size_t j = 0; j < m; j++)
+    0.00 :   4037f8: xor    %eax,%eax
+    0.00 :   4037fa: nopw   0x0(%rax,%rax,1)
+         : 25     maxdiff = std::max(maxdiff, fabs(b[i][j] - a[i][j]));
+    0.03 :   403800: vmovsd (%rcx,%rax,8),%xmm0
+   24.59 :   403805: vsubsd (%rdx,%rax,8),%xmm0,%xmm0 // iteration.cpp:25
+         : 24     for (size_t j = 0; j < m; j++)
+    0.00 :   40380a: inc    %rax
+         : 25     maxdiff = std::max(maxdiff, fabs(b[i][j] - a[i][j]));
+    0.07 :   40380d: vandpd %xmm2,%xmm0,%xmm0
+   75.25 :   403811: vmaxsd %xmm1,%xmm0,%xmm1
+         : 24     for (size_t j = 0; j < m; j++)
+    0.00 :   403815: cmp    %r8,%rax
+    0.00 :   403818: jne    403800 <get_max_diff(ra::rarray<double, 2> const&, ra::rarray<double, 2> const&)+0x50>
+         : 23     for (size_t i = 0; i < n; i++)
+    0.00 :   40381a: inc    %r9
+    0.00 :   40381d: cmp    %r9,%r10
+    0.00 :   403820: jne    4037f0 <get_max_diff(ra::rarray<double, 2> const&, ra::rarray<double, 2> const&)+0x40>
+         : 27     return maxdiff;
+         : 28     }
+    0.00 :   403822: vmovsd %xmm1,%xmm1,%xmm0
+    0.00 :   403826: ret
+         : 24     for (size_t j = 0; j < m; j++)
+    0.00 :   403827: vxorpd %xmm1,%xmm1,%xmm1
+         : 27     }
+    0.00 :   40382b: vmovsd %xmm1,%xmm1,%xmm0
+    0.00 :   40382f: ret
+
+Sorted summary for file /home/l/lcl_uotcscd71/lcl_uotcscd71s1405/omplaplace_serial/laplace
+----------------------------------------------
+
+   59.31 iteration.cpp:14
+   33.63 iteration.cpp:15
+    4.67 iteration.cpp:13
+ Percent |	Source code & Disassembly of laplace for cycles:u (12928 samples, percent: local period)
+--------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3      Disassembly of section .text:
+         :
+         : 5      0000000000403830 <apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&)>:
+         : 6      apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&):
+         : 5      #include "iteration.h"
+         : 6      #include "boundary.h"
+         : 7      #include <omp.h>
+         :
+         : 9      void apply_average(rmatrix<double>&V, rmatrix<double>&Vprev) {
+    0.00 :   403830: push   %rbp
+    0.00 :   403831: mov    %rsp,%rbp
+    0.00 :   403834: push   %r15
+    0.00 :   403836: push   %r14
+         : 14     ra::rarray<double, 2>::extent(int) const:
+         : 1166   }
+         : 1167   inline auto empty() const noexcept -> bool {
+         : 1168   return buffer_.cbegin() == nullptr;
+         : 1169   }
+         : 1170   inline auto extent(int i) const -> size_type {
+         : 1171   return shape_.extent(i);
+    0.00 :   403838: lea    0x20(%rdi),%r14
+         : 1173   apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&):
+    0.00 :   40383c: push   %r13
+    0.00 :   40383e: push   %r12
+    0.00 :   403840: mov    %rdi,%r12
+    0.00 :   403843: push   %rbx
+    0.00 :   403844: mov    %rsi,%rbx
+    0.00 :   403847: and    $0xffffffffffffffe0,%rsp
+    0.00 :   40384b: sub    $0xa0,%rsp
+         : 12     ra::detail::shared_shape<double, 2>::extent(int) const:
+         : 496    return extent_[i];
+    0.00 :   403852: mov    0x20(%rdi),%r13
+    0.00 :   403856: mov    0x28(%rdi),%rax
+         : 499    apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&):
+         : 6      if (Vprev.extent(0)!=V.extent(0) || Vprev.extent(1)!=V.extent(1))
+    0.00 :   40385a: cmp    0x20(%rsi),%r13
+    0.00 :   40385e: je     403d11 <apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&)+0x4e1>
+         : 9      std::multiplies<long>::operator()(long const&, long const&) const:
+         : 210    struct multiplies : public binary_function<_Tp, _Tp, _Tp>
+         : 211    {
+         : 212    _GLIBCXX14_CONSTEXPR
+         : 213    _Tp
+         : 214    operator()(const _Tp& __x, const _Tp& __y) const
+         : 215    { return __x * __y; }
+    0.00 :   403864: imul   %eax,%r13d
+         : 217    ra::detail::shared_buffer<double>::shared_buffer(long):
+         : 97     : data_(nullptr), orig_(nullptr), size_(0), refs_(nullptr) {
+    0.00 :   403868: movq   $0x0,0x50(%rsp)
+    0.00 :   403871: movq   $0x0,0x58(%rsp)
+         : 100    ra::rarray<double, 2>::rarray(long const*):
+         : 720    : buffer_(std::accumulate(anextent, anextent+R, 1, std::multiplies<size_type>())),
+    0.00 :   40387a: movslq %r13d,%r13
+         : 722    ra::detail::shared_buffer<double>::shared_buffer(long):
+         : 98     auto to_be_data = std::unique_ptr<T[]>(new T[asize]);
+    0.00 :   40387d: mov    %r13,%rax
+    0.00 :   403880: shr    $0x3c,%rax
+         : 97     : data_(nullptr), orig_(nullptr), size_(0), refs_(nullptr) {
+    0.00 :   403884: movq   $0x0,0x60(%rsp)
+    0.00 :   40388d: movq   $0x0,0x68(%rsp)
+         : 98     auto to_be_data = std::unique_ptr<T[]>(new T[asize]);
+    0.00 :   403896: jne    40234f <apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&) [clone .cold]>
+    0.00 :   40389c: lea    0x0(,%r13,8),%rdi
+    0.00 :   4038a4: call   4020f0 <operator new[](unsigned long)@plt>
+         : 99     refs_ = new std::atomic<int>(1);
+    0.00 :   4038a9: mov    $0x4,%edi
+         : 98     auto to_be_data = std::unique_ptr<T[]>(new T[asize]);
+    0.00 :   4038ae: mov    %rax,%r15
+         : 99     refs_ = new std::atomic<int>(1);
+    0.00 :   4038b1: call   402080 <operator new(unsigned long)@plt>
+         : 101    std::__atomic_base<int>::__atomic_base(int):
+         : 345    __atomic_base(const __atomic_base&) = delete;
+         : 346    __atomic_base& operator=(const __atomic_base&) = delete;
+         : 347    __atomic_base& operator=(const __atomic_base&) volatile = delete;
+         :
+         : 349    // Requires __int_type convertible to _M_i.
+         : 350    constexpr __atomic_base(__int_type __i) noexcept : _M_i (__i) { }
+    0.00 :   4038b6: movl   $0x1,(%rax)
+         : 352    ra::detail::shared_buffer<double>::shared_buffer(long):
+    0.00 :   4038bc: mov    %rax,0x68(%rsp)
+         : 102    size_ = asize;
+    0.00 :   4038c1: mov    %r13,0x60(%rsp)
+         : 100    data_ = to_be_data.release();
+    0.00 :   4038c6: vpbroadcastq %r15,%xmm0
+    0.00 :   4038cc: vmovdqa %xmm0,0x50(%rsp)
+         : 103    ra::rarray<double, 2>::rarray(long const*):
+         : 721    shape_(reinterpret_cast<const std::array<size_type, R>&>(*anextent), buffer_.begin())
+    0.00 :   4038d2: mov    %r15,%rdx
+    0.00 :   4038d5: mov    %r14,%rsi
+    0.00 :   4038d8: lea    0x70(%rsp),%rdi
+    0.00 :   4038dd: call   402d70 <ra::detail::shared_shape<double, 2>::shared_shape(std::array<long, 2ul> const&, double*)>
+         : 726    ra::detail::shared_buffer<double>::decref():
+         : 290    if (refs_) {
+    0.00 :   4038e2: mov    0x18(%rbx),%rax
+    0.00 :   4038e6: test   %rax,%rax
+    0.00 :   4038e9: je     403918 <apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&)+0xe8>
+         : 294    std::__atomic_base<int>::operator--():
+         : 393    operator++() volatile noexcept
+         : 394    { return __atomic_add_fetch(&_M_i, 1, int(memory_order_seq_cst)); }
+         :
+         : 396    __int_type
+         : 397    operator--() noexcept
+         : 398    { return __atomic_sub_fetch(&_M_i, 1, int(memory_order_seq_cst)); }
+    0.00 :   4038eb: lock decl (%rax)
+         : 400    ra::detail::shared_buffer<double>::decref():
+         : 291    if (--(*refs_) == 0) {
+    0.00 :   4038ee: jne    403918 <apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&)+0xe8>
+         : 292    delete[] orig_;
+    0.00 :   4038f0: mov    0x8(%rbx),%rdi
+    0.00 :   4038f4: test   %rdi,%rdi
+    0.00 :   4038f7: je     4038fe <apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&)+0xce>
+    0.00 :   4038f9: call   4020d0 <operator delete[](void*)@plt>
+         : 293    delete refs_;
+    0.00 :   4038fe: mov    0x18(%rbx),%rdi
+    0.00 :   403902: test   %rdi,%rdi
+    0.00 :   403905: je     403918 <apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&)+0xe8>
+    0.00 :   403907: mov    $0x4,%esi
+    0.00 :   40390c: call   402070 <operator delete(void*, unsigned long)@plt>
+    0.00 :   403911: nopl   0x0(%rax)
+         : 300    ra::detail::shared_buffer<double>::operator=(ra::detail::shared_buffer<double>&&):
+         : 131    size_ = from.size_;
+    0.00 :   403918: mov    0x60(%rsp),%rax
+         : 129    data_ = from.data_;
+    0.00 :   40391d: vmovdqa 0x50(%rsp),%xmm7
+         : 131    size_ = from.size_;
+    0.00 :   403923: mov    %rax,0x10(%rbx)
+         : 132    refs_ = from.refs_;
+    0.00 :   403927: mov    0x68(%rsp),%rax
+         : 134    ra::detail::shared_buffer<double>::uninit():
+         : 280    data_ = nullptr;
+    0.00 :   40392c: movq   $0x0,0x50(%rsp)
+         : 282    ra::detail::shared_buffer<double>::operator=(ra::detail::shared_buffer<double>&&):
+         : 132    refs_ = from.refs_;
+    0.00 :   403935: mov    %rax,0x18(%rbx)
+         : 134    ra::detail::shared_shape<double, 2>::decref():
+         : 551    if (refs_) {
+    0.00 :   403939: mov    0x38(%rbx),%rax
+         : 553    ra::detail::shared_buffer<double>::uninit():
+         : 281    orig_ = nullptr;
+    0.00 :   40393d: movq   $0x0,0x58(%rsp)
+         : 282    size_ = 0;
+    0.00 :   403946: movq   $0x0,0x60(%rsp)
+         : 283    refs_ = nullptr;
+    0.00 :   40394f: movq   $0x0,0x68(%rsp)
+         : 285    ra::detail::shared_buffer<double>::operator=(ra::detail::shared_buffer<double>&&):
+         : 129    data_ = from.data_;
+    0.00 :   403958: vmovdqu %xmm7,(%rbx)
+         : 131    ra::detail::shared_shape<double, 2>::decref():
+         : 551    if (refs_) {
+    0.00 :   40395c: test   %rax,%rax
+    0.00 :   40395f: je     4039f0 <apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&)+0x1c0>
+         : 554    std::__atomic_base<int>::operator--():
+    0.00 :   403965: lock decl (%rax)
+         : 394    ra::detail::shared_shape<double, 2>::decref():
+         : 552    if (--(*refs_) == 0) {
+    0.00 :   403968: jne    40398b <apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&)+0x15b>
+         : 554    delete[] orig_;
+    0.00 :   40396a: mov    0x40(%rbx),%rdi
+    0.00 :   40396e: test   %rdi,%rdi
+    0.00 :   403971: je     403978 <apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&)+0x148>
+    0.00 :   403973: call   4020d0 <operator delete[](void*)@plt>
+         : 555    delete refs_;
+    0.00 :   403978: mov    0x38(%rbx),%rdi
+    0.00 :   40397c: test   %rdi,%rdi
+    0.00 :   40397f: je     40398b <apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&)+0x15b>
+    0.00 :   403981: mov    $0x4,%esi
+    0.00 :   403986: call   402070 <operator delete(void*, unsigned long)@plt>
+         : 561    ra::detail::shared_shape<double, 2>::operator=(ra::detail::shared_shape<double, 2>&&):
+         : 450    orig_         = other.orig_;
+    0.00 :   40398b: mov    0x90(%rsp),%rdx
+         : 447    extent_       = other.extent_;
+    0.00 :   403993: vmovdqa 0x70(%rsp),%xmm7
+         : 450    orig_         = other.orig_;
+    0.00 :   403999: mov    %rdx,0x40(%rbx)
+         : 448    ptrs_         = other.ptrs_;
+    0.00 :   40399d: vmovdqa 0x80(%rsp),%xmm6
+         : 451    ndataoffsets_ = other.ndataoffsets_;
+    0.00 :   4039a6: mov    0x98(%rsp),%rdx
+         : 453    ra::detail::shared_buffer<double>::decref():
+         : 290    if (refs_) {
+    0.00 :   4039ae: mov    0x68(%rsp),%rax
+         : 292    ra::detail::shared_shape<double, 2>::operator=(ra::detail::shared_shape<double, 2>&&):
+         : 451    ndataoffsets_ = other.ndataoffsets_;
+    0.00 :   4039b3: mov    %rdx,0x48(%rbx)
+         : 447    extent_       = other.extent_;
+    0.00 :   4039b7: vmovdqu %xmm7,0x20(%rbx)
+         : 448    ptrs_         = other.ptrs_;
+    0.00 :   4039bc: vmovdqu %xmm6,0x30(%rbx)
+         : 450    ra::detail::shared_buffer<double>::decref():
+         : 290    if (refs_) {
+    0.00 :   4039c1: test   %rax,%rax
+    0.00 :   4039c4: je     403a21 <apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&)+0x1f1>
+         : 293    std::__atomic_base<int>::operator--():
+    0.00 :   4039c6: lock decl (%rax)
+         : 394    ra::detail::shared_buffer<double>::decref():
+         : 291    if (--(*refs_) == 0) {
+    0.00 :   4039c9: jne    403a21 <apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&)+0x1f1>
+         : 292    delete[] orig_;
+    0.00 :   4039cb: mov    0x58(%rsp),%rdi
+    0.00 :   4039d0: test   %rdi,%rdi
+    0.00 :   4039d3: je     4039da <apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&)+0x1aa>
+    0.00 :   4039d5: call   4020d0 <operator delete[](void*)@plt>
+         : 293    delete refs_;
+    0.00 :   4039da: mov    0x68(%rsp),%rdi
+    0.00 :   4039df: test   %rdi,%rdi
+    0.00 :   4039e2: je     403a21 <apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&)+0x1f1>
+    0.00 :   4039e4: mov    $0x4,%esi
+    0.00 :   4039e9: call   402070 <operator delete(void*, unsigned long)@plt>
+    0.00 :   4039ee: jmp    403a21 <apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&)+0x1f1>
+         : 300    ra::detail::shared_shape<double, 2>::operator=(ra::detail::shared_shape<double, 2>&&):
+         : 450    orig_         = other.orig_;
+    0.00 :   4039f0: mov    0x90(%rsp),%rax
+         : 447    extent_       = other.extent_;
+    0.00 :   4039f8: vmovdqa 0x70(%rsp),%xmm7
+         : 450    orig_         = other.orig_;
+    0.00 :   4039fe: mov    %rax,0x40(%rbx)
+         : 451    ndataoffsets_ = other.ndataoffsets_;
+    0.00 :   403a02: mov    0x98(%rsp),%rax
+         : 448    ptrs_         = other.ptrs_;
+    0.00 :   403a0a: vmovdqa 0x80(%rsp),%xmm6
+         : 451    ndataoffsets_ = other.ndataoffsets_;
+    0.00 :   403a13: mov    %rax,0x48(%rbx)
+         : 447    extent_       = other.extent_;
+    0.00 :   403a17: vmovdqu %xmm7,0x20(%rbx)
+         : 448    ptrs_         = other.ptrs_;
+    0.00 :   403a1c: vmovdqu %xmm6,0x30(%rbx)
+         : 450    ra::detail::shared_shape<double, 2>::shared_shape(ra::detail::shared_shape<double, 2>&&):
+         : 429    : extent_(other.extent_), ptrs_(other.ptrs_), refs_(other.refs_), orig_(other.orig_),
+    0.00 :   403a21: vmovdqu 0x20(%r12),%xmm1
+         : 431    ra::detail::shared_buffer<double>::shared_buffer(ra::detail::shared_buffer<double>&&):
+         : 113    : data_(from.data_), orig_(from.orig_), size_(from.size_), refs_(from.refs_) {
+    0.01 :   403a28: mov    0x10(%r12),%rsi
+         : 115    __gnu_cxx::__enable_if<std::__is_scalar<long>::__value, void>::__type std::__fill_a1<long*, long>(long*, long*, long const&):
+         : 922    __fill_a1(_ForwardIterator __first, _ForwardIterator __last,
+         : 923    const _Tp& __value)
+         : 924    {
+         : 925    const _Tp __tmp = __value;
+         : 926    for (; __first != __last; ++__first)
+         : 927    *__first = __tmp;
+    0.00 :   403a2d: movq   $0x0,0x20(%r12)
+    0.00 :   403a36: movq   $0x0,0x28(%r12)
+         : 930    ra::detail::shared_buffer<double>::uninit():
+         : 282    size_ = 0;
+    0.00 :   403a3f: movq   $0x0,0x10(%r12)
+         : 284    ra::detail::shared_shape<double, 2>::shared_shape(ra::detail::shared_shape<double, 2>&&):
+         : 429    : extent_(other.extent_), ptrs_(other.ptrs_), refs_(other.refs_), orig_(other.orig_),
+    0.00 :   403a48: mov    0x40(%r12),%rdx
+         : 431    ra::detail::shared_buffer<double>::shared_buffer(ra::detail::shared_buffer<double>&&):
+         : 113    : data_(from.data_), orig_(from.orig_), size_(from.size_), refs_(from.refs_) {
+    0.00 :   403a4d: vmovdqu (%r12),%xmm2
+         : 115    ra::detail::shared_shape<double, 2>::uninit():
+         : 541    orig_         = nullptr;
+    0.00 :   403a53: movq   $0x0,0x40(%r12)
+         : 543    ra::detail::shared_buffer<double>::uninit():
+         : 280    data_ = nullptr;
+    0.00 :   403a5c: movq   $0x0,(%r12)
+         : 281    orig_ = nullptr;
+    0.00 :   403a64: movq   $0x0,0x8(%r12)
+         : 283    ra::detail::shared_buffer<double>::shared_buffer(ra::detail::shared_buffer<double>&&):
+         : 113    : data_(from.data_), orig_(from.orig_), size_(from.size_), refs_(from.refs_) {
+    0.00 :   403a6d: mov    0x18(%r12),%rcx
+         : 115    ra::detail::shared_buffer<double>::uninit():
+         : 283    refs_ = nullptr;
+    0.00 :   403a72: movq   $0x0,0x18(%r12)
+         : 285    ra::detail::shared_buffer<double>::operator=(ra::detail::shared_buffer<double>&&):
+         : 131    size_ = from.size_;
+    0.00 :   403a7b: mov    0x10(%rbx),%rdi
+         : 129    data_ = from.data_;
+    0.00 :   403a7f: vmovdqu (%rbx),%xmm6
+         : 131    size_ = from.size_;
+    0.00 :   403a83: mov    %rdi,0x10(%r12)
+         : 132    refs_ = from.refs_;
+    0.00 :   403a88: mov    0x18(%rbx),%rdi
+         : 134    ra::detail::shared_shape<double, 2>::shared_shape(ra::detail::shared_shape<double, 2>&&):
+         : 429    : extent_(other.extent_), ptrs_(other.ptrs_), refs_(other.refs_), orig_(other.orig_),
+    0.00 :   403a8c: vmovdqu 0x30(%r12),%xmm0
+         : 431    ra::detail::shared_shape<double, 2>::operator=(ra::detail::shared_shape<double, 2>&&):
+         : 447    extent_       = other.extent_;
+    0.00 :   403a93: vmovdqu 0x20(%rbx),%xmm7
+         : 449    ra::detail::shared_shape<double, 2>::shared_shape(ra::detail::shared_shape<double, 2>&&):
+         : 430    ndataoffsets_(other.ndataoffsets_) {
+    0.00 :   403a98: mov    0x48(%r12),%rax
+         : 432    ra::detail::shared_shape<double, 2>::uninit():
+         : 540    ptrs_         = nullptr;
+    0.00 :   403a9d: movq   $0x0,0x30(%r12)
+         : 543    ndataoffsets_ = 0;
+    0.00 :   403aa6: movq   $0x0,0x48(%r12)
+         : 542    refs_         = nullptr;
+    0.00 :   403aaf: movq   $0x0,0x38(%r12)
+         : 544    ra::detail::shared_buffer<double>::operator=(ra::detail::shared_buffer<double>&&):
+         : 132    refs_ = from.refs_;
+    0.00 :   403ab8: mov    %rdi,0x18(%r12)
+         : 129    data_ = from.data_;
+    0.00 :   403abd: vmovdqu %xmm6,(%r12)
+         : 131    ra::detail::shared_shape<double, 2>::operator=(ra::detail::shared_shape<double, 2>&&):
+         : 447    extent_       = other.extent_;
+    0.00 :   403ac3: vmovdqu %xmm7,0x20(%r12)
+         : 448    ptrs_         = other.ptrs_;
+    0.00 :   403aca: vmovdqu 0x30(%rbx),%xmm6
+         : 450    ra::detail::shared_shape<double, 2>::shared_shape(ra::detail::shared_shape<double, 2>&&):
+         : 429    : extent_(other.extent_), ptrs_(other.ptrs_), refs_(other.refs_), orig_(other.orig_),
+    0.00 :   403acf: vmovdqa %xmm1,0x70(%rsp)
+         : 431    ra::detail::shared_shape<double, 2>::operator=(ra::detail::shared_shape<double, 2>&&):
+         : 448    ptrs_         = other.ptrs_;
+    0.00 :   403ad5: vmovdqu %xmm6,0x30(%r12)
+         : 450    orig_         = other.orig_;
+    0.00 :   403adc: mov    0x40(%rbx),%rdi
+    0.00 :   403ae0: vmovq  %xmm0,%r8
+    0.00 :   403ae5: mov    %rdi,0x40(%r12)
+         : 451    ndataoffsets_ = other.ndataoffsets_;
+    0.00 :   403aea: mov    0x48(%rbx),%rdi
+    0.00 :   403aee: mov    %rdi,0x48(%r12)
+         : 454    ra::detail::shared_buffer<double>::operator=(ra::detail::shared_buffer<double>&&):
+         : 129    data_ = from.data_;
+    0.00 :   403af3: vmovdqu %xmm2,(%rbx)
+         : 131    size_ = from.size_;
+    0.00 :   403af7: mov    %rsi,0x10(%rbx)
+         : 133    ra::detail::shared_shape<double, 2>::operator=(ra::detail::shared_shape<double, 2>&&):
+         : 451    ndataoffsets_ = other.ndataoffsets_;
+    0.00 :   403afb: mov    %rax,0x48(%rbx)
+         : 447    extent_       = other.extent_;
+    0.00 :   403aff: vmovdqu %xmm1,0x20(%rbx)
+         : 448    ptrs_         = other.ptrs_;
+    0.00 :   403b04: vmovdqu %xmm0,0x30(%rbx)
+         : 450    apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&):
+         : 9      Vprev = rmatrix<double>(V.shape());
+         : 10     std::swap(V, Vprev);
+         : 11     const size_t n = V.extent(0);
+    0.00 :   403b09: mov    0x20(%r12),%rax
+         : 13     ra::detail::shared_shape<double, 2>::operator=(ra::detail::shared_shape<double, 2>&&):
+         : 450    orig_         = other.orig_;
+    0.00 :   403b0e: mov    %rdx,0x40(%rbx)
+         : 452    apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&):
+         : 12     const size_t m = V.extent(1);
+         :
+         : 14     for (size_t i = 1; i < n-1; i++)
+    0.00 :   403b12: lea    -0x1(%rax),%rdx
+         : 16     ra::detail::shared_buffer<double>::operator=(ra::detail::shared_buffer<double>&&):
+         : 132    refs_ = from.refs_;
+    0.00 :   403b16: mov    %rcx,0x18(%rbx)
+         : 134    ra::detail::shared_shape<double, 2>::extent(int) const:
+         : 496    return extent_[i];
+    0.00 :   403b1a: mov    0x28(%r12),%rbx
+         : 498    apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&):
+    0.00 :   403b1f: cmp    $0x1,%rdx
+    0.00 :   403b23: jbe    403cc9 <apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&)+0x499>
+         : 13     for (size_t j = 1; j < m-1; j++)
+    0.00 :   403b29: lea    -0x1(%rbx),%r9
+    0.00 :   403b2d: cmp    $0x1,%r9
+    0.00 :   403b31: jbe    403cc9 <apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&)+0x499>
+    0.00 :   403b37: lea    -0x2(%rbx),%rsi
+    0.00 :   403b3b: lea    -0x10(%r8,%rax,8),%r14
+    0.00 :   403b40: lea    -0x3(%rbx),%rax
+    0.00 :   403b44: mov    %rax,0x48(%rsp)
+    0.00 :   403b49: mov    %rsi,%rax
+    0.00 :   403b4c: and    $0xfffffffffffffffc,%rax
+    0.00 :   403b50: lea    0x1(%rax),%rcx
+    0.00 :   403b54: mov    %rcx,0x38(%rsp)
+    0.00 :   403b59: mov    %rbx,%rcx
+    0.00 :   403b5c: sub    %rax,%rcx
+    0.00 :   403b5f: mov    %rsi,%r11
+    0.00 :   403b62: mov    %rsi,0x18(%rsp)
+    0.00 :   403b67: mov    %rax,0x20(%rsp)
+    0.00 :   403b6c: and    $0x3,%esi
+    0.00 :   403b6f: lea    -0x2(%rcx),%rax
+         : 14     V[i][j] = 0.25*(Vprev[i-1][j] + Vprev[i+1][j]
+    0.01 :   403b73: vmovsd 0x5c5(%rip),%xmm1        # 404140 <_IO_stdin_used+0x140>
+    0.00 :   403b7b: shr    $0x2,%r11
+    0.00 :   403b7f: mov    %rsi,0x40(%rsp)
+    0.00 :   403b84: mov    %rcx,0x30(%rsp)
+    0.00 :   403b89: mov    %rax,0x28(%rsp)
+         : 20     ra::detail::shared_shape<double, 2>::ptrs() const:
+         : 485    return ptrs_;
+    0.00 :   403b8e: mov    0x30(%r12),%r13
+    0.00 :   403b93: shl    $0x5,%r11
+         : 488    ra::rarray<double, 2>::private_at(long):
+         : 1672   RA_FORCE_inline auto leval(size_type i) const -> const T&;
+         : 1673   private:
+         : 1674   friend class detail::Bracket<T, R-1, rarray<T, R>>;
+         : 1675   friend class detail::ConstBracket<T, R-1, rarray<T, R>>;
+         : 1676   RA_FORCE_inline auto private_at(size_type i) -> typename detail::PointerArray<T, R-1>::type {
+         : 1677   return shape_.ptrs()[i];
+    0.00 :   403b97: mov    $0x8,%r12d
+    0.00 :   403b9d: add    $0x8,%r11
+    0.00 :   403ba1: sub    %r8,%r12
+         : 1681   apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&):
+    0.00 :   403ba4: vmovddup %xmm1,%xmm3
+    0.00 :   403ba8: vbroadcastsd %xmm1,%ymm2
+    0.00 :   403bad: nopl   (%rax)
+         : 17     ra::rarray<double, 2>::private_at(long):
+    0.01 :   403bb0: lea    (%r12,%r8,1),%rdx
+    0.08 :   403bb4: mov    (%r8),%rdi
+    0.05 :   403bb7: mov    0x10(%r8),%rsi
+    0.09 :   403bbb: mov    0x0(%r13,%rdx,1),%rcx
+    0.01 :   403bc0: add    $0x8,%r8
+    0.02 :   403bc4: mov    (%r8),%rax
+    0.01 :   403bc7: cmp    $0x3,%rbx
+    0.00 :   403bcb: je     403ce0 <apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&)+0x4b0>
+    0.03 :   403bd1: lea    0x8(%rcx),%rdx
+    0.01 :   403bd5: lea    0x10(%rsi),%r15
+    0.03 :   403bd9: mov    %rdx,%r10
+    0.02 :   403bdc: sub    %r15,%r10
+    0.01 :   403bdf: cmp    $0x10,%r10
+    0.01 :   403be3: mov    %rcx,%r10
+    0.10 :   403be6: seta   %r15b
+    0.02 :   403bea: sub    %rax,%r10
+    0.01 :   403bed: cmp    $0x20,%r10
+    0.11 :   403bf1: seta   %r10b
+    0.01 :   403bf5: test   %r10b,%r15b
+    0.00 :   403bf8: je     403ce0 <apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&)+0x4b0>
+    0.00 :   403bfe: lea    0x10(%rdi),%r10
+    0.08 :   403c02: sub    %r10,%rdx
+    0.01 :   403c05: cmp    $0x10,%rdx
+    0.00 :   403c09: jbe    403ce0 <apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&)+0x4b0>
+    0.00 :   403c0f: cmpq   $0x2,0x48(%rsp)
+    0.00 :   403c15: jbe    403d20 <apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&)+0x4f0>
+    0.05 :   403c1b: mov    $0x8,%edx
+         : 1699   apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&):
+    1.19 :   403c20: vmovupd (%rdi,%rdx,1),%ymm4 // iteration.cpp:14
+   32.71 :   403c25: vaddpd (%rsi,%rdx,1),%ymm4,%ymm0
+         : 15     + Vprev[i][j-1]  +Vprev[i][j+1]);
+   15.47 :   403c2a: vaddpd -0x8(%rax,%rdx,1),%ymm0,%ymm0 // iteration.cpp:15
+   18.16 :   403c30: vaddpd 0x8(%rax,%rdx,1),%ymm0,%ymm0
+         : 14     V[i][j] = 0.25*(Vprev[i-1][j] + Vprev[i+1][j]
+   17.91 :   403c36: vmulpd %ymm2,%ymm0,%ymm0 // iteration.cpp:14
+    7.50 :   403c3a: vmovupd %ymm0,(%rcx,%rdx,1)
+         : 13     for (size_t j = 1; j < m-1; j++)
+    3.23 :   403c3f: add    $0x20,%rdx // iteration.cpp:13
+    0.01 :   403c43: cmp    %r11,%rdx
+    1.44 :   403c46: jne    403c20 <apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&)+0x3f0>
+    0.05 :   403c48: cmpq   $0x0,0x40(%rsp)
+    0.03 :   403c4e: je     403cbd <apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&)+0x48d>
+    0.07 :   403c50: cmpq   $0x3,0x30(%rsp)
+    0.01 :   403c56: mov    0x28(%rsp),%rdx
+    0.01 :   403c5b: je     403d33 <apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&)+0x503>
+         : 14     V[i][j] = 0.25*(Vprev[i-1][j] + Vprev[i+1][j]
+    0.02 :   403c61: mov    0x20(%rsp),%r10
+         : 13     for (size_t j = 1; j < m-1; j++)
+    0.05 :   403c66: mov    0x38(%rsp),%r15
+         : 15     ra::detail::shared_shape<double, 2>::ptrs() const:
+         : 484    inline auto ptrs() const noexcept -> ptrs_type {
+    0.02 :   403c6b: inc    %r10
+         : 486    apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&):
+         : 14     V[i][j] = 0.25*(Vprev[i-1][j] + Vprev[i+1][j]
+    0.19 :   403c6e: vmovupd (%rsi,%r10,8),%xmm5
+    0.10 :   403c74: vaddpd (%rdi,%r10,8),%xmm5,%xmm0
+         : 15     + Vprev[i][j-1]  +Vprev[i][j+1]);
+    0.15 :   403c7a: vaddpd -0x8(%rax,%r10,8),%xmm0,%xmm0
+    0.17 :   403c81: vaddpd 0x8(%rax,%r10,8),%xmm0,%xmm0
+         : 14     V[i][j] = 0.25*(Vprev[i-1][j] + Vprev[i+1][j]
+    0.14 :   403c88: vmulpd %xmm3,%xmm0,%xmm0
+    0.05 :   403c8c: vmovupd %xmm0,(%rcx,%r10,8)
+         : 13     for (size_t j = 1; j < m-1; j++)
+    0.02 :   403c92: test   $0x1,%dl
+    0.00 :   403c95: je     403cbd <apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&)+0x48d>
+    0.02 :   403c97: and    $0xfffffffffffffffe,%rdx
+    0.02 :   403c9b: add    %r15,%rdx
+         : 14     V[i][j] = 0.25*(Vprev[i-1][j] + Vprev[i+1][j]
+    0.05 :   403c9e: vmovsd (%rdi,%rdx,8),%xmm0
+    0.05 :   403ca3: vaddsd (%rsi,%rdx,8),%xmm0,%xmm0
+         : 15     + Vprev[i][j-1]  +Vprev[i][j+1]);
+    0.15 :   403ca8: vaddsd -0x8(%rax,%rdx,8),%xmm0,%xmm0
+    0.07 :   403cae: vaddsd 0x8(%rax,%rdx,8),%xmm0,%xmm0
+         : 14     V[i][j] = 0.25*(Vprev[i-1][j] + Vprev[i+1][j]
+    0.05 :   403cb4: vmulsd %xmm1,%xmm0,%xmm0
+    0.09 :   403cb8: vmovsd %xmm0,(%rcx,%rdx,8)
+         : 12     for (size_t i = 1; i < n-1; i++)
+    0.03 :   403cbd: cmp    %r8,%r14
+    0.00 :   403cc0: jne    403bb0 <apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&)+0x380>
+    0.00 :   403cc6: vzeroupper
+         : 16     }
+    0.00 :   403cc9: lea    -0x28(%rbp),%rsp
+    0.00 :   403ccd: pop    %rbx
+    0.00 :   403cce: pop    %r12
+    0.00 :   403cd0: pop    %r13
+    0.01 :   403cd2: pop    %r14
+    0.00 :   403cd4: pop    %r15
+    0.00 :   403cd6: pop    %rbp
+    0.00 :   403cd7: ret
+    0.00 :   403cd8: nopl   0x0(%rax,%rax,1)
+         : 26     ra::rarray<double, 2>::private_at(long):
+         : 1672   return shape_.ptrs()[i];
+    0.00 :   403ce0: mov    $0x1,%edx
+    0.00 :   403ce5: nopl   (%rax)
+         : 1675   apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&):
+         : 14     V[i][j] = 0.25*(Vprev[i-1][j] + Vprev[i+1][j]
+    0.00 :   403ce8: vmovsd (%rsi,%rdx,8),%xmm0
+    0.00 :   403ced: vaddsd (%rdi,%rdx,8),%xmm0,%xmm0
+         : 15     + Vprev[i][j-1]  +Vprev[i][j+1]);
+    0.00 :   403cf2: vaddsd -0x8(%rax,%rdx,8),%xmm0,%xmm0
+    0.00 :   403cf8: inc    %rdx
+    0.00 :   403cfb: vaddsd (%rax,%rdx,8),%xmm0,%xmm0
+         : 14     V[i][j] = 0.25*(Vprev[i-1][j] + Vprev[i+1][j]
+    0.00 :   403d00: vmulsd %xmm1,%xmm0,%xmm0
+    0.00 :   403d04: vmovsd %xmm0,-0x8(%rcx,%rdx,8)
+         : 13     for (size_t j = 1; j < m-1; j++)
+    0.00 :   403d0a: cmp    %rdx,%r9
+    0.00 :   403d0d: jne    403ce8 <apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&)+0x4b8>
+    0.00 :   403d0f: jmp    403cbd <apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&)+0x48d>
+         : 6      if (Vprev.extent(0)!=V.extent(0) || Vprev.extent(1)!=V.extent(1))
+    0.00 :   403d11: cmp    %rax,0x28(%rsi)
+    0.00 :   403d15: jne    403864 <apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&)+0x34>
+    0.00 :   403d1b: jmp    403a21 <apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&)+0x1f1>
+    0.00 :   403d20: mov    0x18(%rsp),%rdx
+         : 11     ra::rarray<double, 2>::private_at(long):
+    0.00 :   403d25: xor    %r10d,%r10d
+         : 1673   apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&):
+         : 13     for (size_t j = 1; j < m-1; j++)
+    0.00 :   403d28: mov    $0x1,%r15d
+    0.00 :   403d2e: jmp    403c6b <apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&)+0x43b>
+    0.00 :   403d33: mov    0x38(%rsp),%rdx
+    0.00 :   403d38: jmp    403c9e <apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&)+0x46e>
+         : 18     ra::detail::shared_buffer<double>::decref():
+         : 290    if (refs_) {
+    0.00 :   403d3d: mov    %rax,%rbx
+    0.00 :   403d40: jmp    402354 <apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&) [clone .cold]+0x5>
+         : 293    std::enable_if<std::is_convertible<double (*) [], double (*) []>::value, void>::type std::default_delete<double []>::operator()<double>(double*) const:
+         : 132    typename enable_if<is_convertible<_Up(*)[], _Tp(*)[]>::value>::type
+         : 133    operator()(_Up* __ptr) const
+         : 134    {
+         : 135    static_assert(sizeof(_Tp)>0,
+         : 136    "can't delete pointer to incomplete type");
+         : 137    delete [] __ptr;
+    0.00 :   403d45: mov    %rax,%rbx
+    0.00 :   403d48: jmp    402369 <apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&) [clone .cold]+0x1a>
+
+Sorted summary for file /home/l/lcl_uotcscd71/lcl_uotcscd71s1405/omplaplace_serial/laplace
+----------------------------------------------
+
+   40.24 boundary.cpp:21
+   22.52 rarray:1672
+   17.12 boundary.cpp:24
+    9.91 boundary.cpp:20
+    7.51 boundary.cpp:23
+ Percent |	Source code & Disassembly of laplace for cycles:u (333 samples, percent: local period)
+------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3      Disassembly of section .text:
+         :
+         : 5      0000000000403480 <set_boundary_condition(ra::rarray<double, 2>&, double)>:
+         : 6      set_boundary_condition(ra::rarray<double, 2>&, double):
+         : 9      // inner rectangle.
+         : 10     //
+         : 11     // @param V        Matrix containing the (laplace) field;
+         : 12     // @param fraction What linear fraction is the inner rectangle.
+         : 13     //
+         : 14     void set_boundary_condition(rmatrix<double>& V, double fraction) {
+    0.00 :   403480: push   %rbp
+    0.00 :   403481: vxorps %xmm1,%xmm1,%xmm1
+    0.00 :   403485: vmovsd %xmm0,%xmm0,%xmm3
+    0.00 :   403489: mov    %rsp,%rbp
+    0.00 :   40348c: push   %r15
+    0.00 :   40348e: mov    %rdi,%r8
+    0.00 :   403491: push   %r14
+    0.00 :   403493: push   %r13
+    0.00 :   403495: push   %r12
+    0.00 :   403497: push   %rbx
+    0.00 :   403498: sub    $0x28,%rsp
+         : 10     const size_t n = V.extent(0);
+    0.00 :   40349c: mov    0x20(%rdi),%rax
+         : 11     const size_t m = V.extent(1);
+    0.00 :   4034a0: mov    0x28(%rdi),%r9
+         : 14     const size_t imid = (n-1)/2;
+         : 15     const size_t jmid = (m-1)/2;
+         : 16     const size_t iflat1 = imid - fraction*n/2;
+    0.00 :   4034a4: vcvtusi2sd %rax,%xmm1,%xmm0
+         : 12     const size_t imid = (n-1)/2;
+    0.00 :   4034aa: lea    -0x1(%rax),%rdx
+    0.00 :   4034ae: mov    %rdx,%rcx
+    0.00 :   4034b1: shr    %rcx
+         : 14     const size_t iflat1 = imid - fraction*n/2;
+    0.00 :   4034b4: vmulsd %xmm3,%xmm0,%xmm0
+    0.00 :   4034b8: vcvtsi2sd %rcx,%xmm1,%xmm2
+    0.00 :   4034bd: vmovsd 0xc6b(%rip),%xmm3        # 404130 <_IO_stdin_used+0x130>
+         : 13     const size_t jmid = (m-1)/2;
+    0.00 :   4034c5: lea    -0x1(%r9),%r15
+    0.00 :   4034c9: mov    %r15,%rcx
+         : 14     const size_t iflat1 = imid - fraction*n/2;
+    0.00 :   4034cc: vmovsd %xmm0,%xmm0,%xmm4
+    0.00 :   4034d0: vfnmadd132sd %xmm3,%xmm2,%xmm4
+         : 15     const size_t iflat2 = imid + fraction*n/2;
+    0.00 :   4034d5: vfmadd231sd %xmm3,%xmm0,%xmm2
+         : 13     const size_t jmid = (m-1)/2;
+    0.00 :   4034da: shr    %rcx
+         : 16     const size_t jflat1 = jmid - fraction*n/2;
+    0.00 :   4034dd: vcvtsi2sd %rcx,%xmm1,%xmm1
+         : 14     const size_t iflat1 = imid - fraction*n/2;
+    0.00 :   4034e2: vcvttsd2usi %xmm4,%rbx
+         : 15     const size_t iflat2 = imid + fraction*n/2;
+    0.00 :   4034e8: vcvttsd2usi %xmm2,%r13
+         : 16     const size_t jflat1 = jmid - fraction*n/2;
+    0.00 :   4034ee: vmovsd %xmm0,%xmm0,%xmm2
+    0.00 :   4034f2: vfnmadd132sd %xmm3,%xmm1,%xmm2
+         : 17     const size_t jflat2 = jmid + fraction*n/2;
+    0.00 :   4034f7: vfmadd132sd %xmm3,%xmm1,%xmm0
+         : 16     const size_t jflat1 = jmid - fraction*n/2;
+    0.00 :   4034fc: vcvttsd2usi %xmm2,%r14
+         : 17     const size_t jflat2 = jmid + fraction*n/2;
+    0.00 :   403502: vcvttsd2usi %xmm0,%r12
+         : 18     for (size_t i = 0; i < n; i++)
+    0.00 :   403508: test   %rax,%rax
+    0.00 :   40350b: je     40356a <set_boundary_condition(ra::rarray<double, 2>&, double)+0xea>
+         : 21     ra::detail::shared_shape<double, 2>::ptrs() const:
+         : 485    else
+         : 486    throw std::out_of_range(std::string("Incompatible dimensions in function ") + std::string(__PRETTY_FUNCTION__));
+         : 487    }
+         : 488    }
+         : 489    inline auto ptrs() const noexcept -> ptrs_type {
+         : 490    return ptrs_;
+    0.00 :   40350d: mov    0x30(%rdi),%rcx
+         : 492    ra::rarray<double, 2>::private_at(long):
+         : 1672   RA_FORCE_inline auto leval(size_type i) const -> const T&;
+         : 1673   private:
+         : 1674   friend class detail::Bracket<T, R-1, rarray<T, R>>;
+         : 1675   friend class detail::ConstBracket<T, R-1, rarray<T, R>>;
+         : 1676   RA_FORCE_inline auto private_at(size_type i) -> typename detail::PointerArray<T, R-1>::type {
+         : 1677   return shape_.ptrs()[i];
+    0.00 :   403511: mov    (%rcx,%rdx,8),%rdi
+    0.00 :   403515: lea    0x0(,%rax,8),%rdx
+    0.00 :   40351d: mov    (%rcx),%rcx
+    0.00 :   403520: lea    (%rdi,%rdx,1),%rsi
+    0.00 :   403524: cmp    %rsi,%rcx
+    0.00 :   403527: jae    403536 <set_boundary_condition(ra::rarray<double, 2>&, double)+0xb6>
+    0.00 :   403529: lea    (%rcx,%rdx,1),%rsi
+    0.00 :   40352d: cmp    %rsi,%rdi
+    0.00 :   403530: jb     40367c <set_boundary_condition(ra::rarray<double, 2>&, double)+0x1fc>
+         : 1687   set_boundary_condition(ra::rarray<double, 2>&, double):
+         : 19     V[0][i] = V[n-1][i] = 0.0;
+    0.00 :   403536: xor    %esi,%esi
+    0.00 :   403538: mov    %r8,(%rsp)
+    0.00 :   40353c: mov    %r9,0x10(%rsp)
+    0.00 :   403541: mov    %rcx,0x8(%rsp)
+    0.00 :   403546: mov    %rdx,0x18(%rsp)
+    0.00 :   40354b: call   4020c0 <memset@plt>
+    0.00 :   403550: mov    0x18(%rsp),%rdx
+    0.00 :   403555: mov    0x8(%rsp),%rdi
+    0.00 :   40355a: xor    %esi,%esi
+    0.00 :   40355c: call   4020c0 <memset@plt>
+    0.00 :   403561: mov    0x10(%rsp),%r9
+    0.00 :   403566: mov    (%rsp),%r8
+         : 20     for (size_t j = 0; j < m; j++)
+    0.00 :   40356a: test   %r9,%r9
+    0.00 :   40356d: je     40359b <set_boundary_condition(ra::rarray<double, 2>&, double)+0x11b>
+    0.30 :   40356f: mov    0x30(%r8),%rax
+         : 24     ra::detail::Bracket<double, 1, ra::rarray<double, 2> >::operator[](long):
+         : 1757   size_type        index_;
+         : 1758   const size_type* shape_;
+         : 1759   public:
+         : 1760   RA_FORCE_inline auto operator[](size_type nextindex) noexcept(RA_noboundscheck) -> T& {
+         : 1761   RA_CHECKORSAY(nextindex >= 0 && nextindex < shape_[1], "index out of range of array");
+         : 1762   return parent_.private_at(index_)[nextindex];
+    0.00 :   403573: lea    0x0(,%r15,8),%rcx
+    0.00 :   40357b: lea    (%rax,%r9,8),%rsi
+    0.00 :   40357f: nop
+         : 1766   ra::rarray<double, 2>::private_at(long):
+         : 1672   return shape_.ptrs()[i];
+   20.42 :   403580: mov    (%rax),%rdx // rarray:1672
+         : 1674   set_boundary_condition(ra::rarray<double, 2>&, double):
+    9.91 :   403583: add    $0x8,%rax // boundary.cpp:20
+         : 21     V[j][0] = V[j][m-1] = 0.0;
+   30.33 :   403587: movq   $0x0,(%rdx,%rcx,1) // boundary.cpp:21
+    9.91 :   40358f: movq   $0x0,(%rdx)
+         : 20     for (size_t j = 0; j < m; j++)
+    0.00 :   403596: cmp    %rsi,%rax
+    0.30 :   403599: jne    403580 <set_boundary_condition(ra::rarray<double, 2>&, double)+0x100>
+         : 22     for (size_t i = iflat1; i <  iflat2; i++)
+    0.00 :   40359b: cmp    %r13,%rbx
+    0.00 :   40359e: jae    40366d <set_boundary_condition(ra::rarray<double, 2>&, double)+0x1ed>
+    0.00 :   4035a4: cmp    %r12,%r14
+    0.00 :   4035a7: jae    40366d <set_boundary_condition(ra::rarray<double, 2>&, double)+0x1ed>
+    0.00 :   4035ad: mov    %r12,%rsi
+    0.00 :   4035b0: sub    %r14,%rsi
+    0.00 :   4035b3: mov    %rsi,%rdi
+    0.00 :   4035b6: mov    %rsi,%rax
+    0.00 :   4035b9: shr    $0x2,%rdi
+    0.00 :   4035bd: and    $0xfffffffffffffffc,%rax
+         : 33     ra::detail::shared_shape<double, 2>::ptrs() const:
+         : 485    return ptrs_;
+    0.00 :   4035c1: mov    0x30(%r8),%r9
+    0.00 :   4035c5: lea    -0x1(%rsi),%r8
+    0.00 :   4035c9: add    %r14,%rax
+    0.00 :   4035cc: shl    $0x5,%rdi
+    0.00 :   4035d0: cmp    $0x2,%r8
+    0.00 :   4035d4: cmovbe %r14,%rax
+         : 492    set_boundary_condition(ra::rarray<double, 2>&, double):
+         : 24     for (size_t j = jflat1; j <  jflat2; j++)
+         : 25     V[i][j] = 1.0;
+    0.00 :   4035d8: vmovsd 0xb58(%rip),%xmm1        # 404138 <_IO_stdin_used+0x138>
+         : 27     ra::detail::Bracket<double, 1, ra::rarray<double, 2> >::operator[](long):
+         : 1757   return parent_.private_at(index_)[nextindex];
+    0.00 :   4035e0: lea    0x0(,%rax,8),%r10
+         : 1759   set_boundary_condition(ra::rarray<double, 2>&, double):
+         : 23     for (size_t j = jflat1; j <  jflat2; j++)
+    0.00 :   4035e8: lea    0x1(%rax),%rcx
+    0.00 :   4035ec: add    $0x2,%rax
+    0.00 :   4035f0: mov    %rcx,0x18(%rsp)
+    0.00 :   4035f5: mov    %rax,0x10(%rsp)
+    0.00 :   4035fa: lea    0x0(,%r14,8),%r11
+         : 29     ra::detail::Bracket<double, 1, ra::rarray<double, 2> >::operator[](long):
+    0.30 :   403602: lea    0x10(%r10),%r15
+    0.00 :   403606: lea    0x8(%r10),%r14
+    0.00 :   40360a: vbroadcastsd %xmm1,%ymm0
+    0.00 :   40360f: and    $0x3,%esi
+    0.00 :   403612: nopw   0x0(%rax,%rax,1)
+         : 1762   ra::rarray<double, 2>::private_at(long):
+         : 1672   return shape_.ptrs()[i];
+    0.90 :   403618: mov    (%r9,%rbx,8),%rcx // rarray:1672
+    0.00 :   40361c: lea    (%rcx,%r11,1),%rax
+    1.20 :   403620: lea    (%rdi,%rax,1),%rdx
+    0.00 :   403624: cmp    $0x2,%r8
+    0.00 :   403628: jbe    403642 <set_boundary_condition(ra::rarray<double, 2>&, double)+0x1c2>
+    0.30 :   40362a: nopw   0x0(%rax,%rax,1)
+         : 1679   set_boundary_condition(ra::rarray<double, 2>&, double):
+         : 24     V[i][j] = 1.0;
+   15.92 :   403630: vmovupd %ymm0,(%rax) // boundary.cpp:24
+         : 23     for (size_t j = jflat1; j <  jflat2; j++)
+    2.10 :   403634: add    $0x20,%rax // boundary.cpp:23
+    0.00 :   403638: cmp    %rax,%rdx
+    2.70 :   40363b: jne    403630 <set_boundary_condition(ra::rarray<double, 2>&, double)+0x1b0>
+    0.00 :   40363d: test   %rsi,%rsi
+    0.30 :   403640: je     403662 <set_boundary_condition(ra::rarray<double, 2>&, double)+0x1e2>
+         : 24     V[i][j] = 1.0;
+    1.20 :   403642: vmovsd %xmm1,(%rcx,%r10,1) // boundary.cpp:24
+         : 23     for (size_t j = jflat1; j <  jflat2; j++)
+    1.50 :   403648: cmp    %r12,0x18(%rsp) // boundary.cpp:23
+    0.00 :   40364d: jae    403662 <set_boundary_condition(ra::rarray<double, 2>&, double)+0x1e2>
+         : 24     V[i][j] = 1.0;
+    0.30 :   40364f: vmovsd %xmm1,(%rcx,%r14,1)
+         : 23     for (size_t j = jflat1; j <  jflat2; j++)
+    1.20 :   403655: cmp    %r12,0x10(%rsp)
+    0.00 :   40365a: jae    403662 <set_boundary_condition(ra::rarray<double, 2>&, double)+0x1e2>
+         : 24     V[i][j] = 1.0;
+    0.30 :   40365c: vmovsd %xmm1,(%rcx,%r15,1)
+         : 22     for (size_t i = iflat1; i <  iflat2; i++)
+    0.00 :   403662: inc    %rbx
+    0.00 :   403665: cmp    %rbx,%r13
+    0.00 :   403668: jne    403618 <set_boundary_condition(ra::rarray<double, 2>&, double)+0x198>
+    0.30 :   40366a: vzeroupper
+         : 25     }
+    0.00 :   40366d: add    $0x28,%rsp
+    0.00 :   403671: pop    %rbx
+    0.00 :   403672: pop    %r12
+    0.00 :   403674: pop    %r13
+    0.00 :   403676: pop    %r14
+    0.30 :   403678: pop    %r15
+    0.00 :   40367a: pop    %rbp
+    0.00 :   40367b: ret
+         : 18     for (size_t i = 0; i < n; i++)
+    0.00 :   40367c: xor    %edx,%edx
+    0.00 :   40367e: xchg   %ax,%ax
+         : 19     V[0][i] = V[n-1][i] = 0.0;
+    0.00 :   403680: movq   $0x0,(%rdi,%rdx,8)
+    0.00 :   403688: movq   $0x0,(%rcx,%rdx,8)
+         : 18     for (size_t i = 0; i < n; i++)
+    0.00 :   403690: inc    %rdx
+    0.00 :   403693: cmp    %rax,%rdx
+    0.00 :   403696: jne    403680 <set_boundary_condition(ra::rarray<double, 2>&, double)+0x200>
+    0.00 :   403698: jmp    40356a <set_boundary_condition(ra::rarray<double, 2>&, double)+0xea>
+
+Sorted summary for file /home/l/lcl_uotcscd71/lcl_uotcscd71s1405/omplaplace_serial/laplace
+----------------------------------------------
+
+  100.00 laplace.cpp:27
+ Percent |	Source code & Disassembly of laplace for cycles:u (2 samples, percent: local period)
+----------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3      Disassembly of section .text:
+         :
+         : 5      0000000000402420 <main>:
+         : 6      main():
+         : 14     #include "iteration.h"
+         : 15     #include "output.h"
+         :
+         : 17     // Driver function
+         : 18     int main(int argc, char** argv)
+         : 19     {
+    0.00 :   402420: push   %r15
+    0.00 :   402422: push   %r14
+    0.00 :   402424: push   %r13
+    0.00 :   402426: push   %r12
+    0.00 :   402428: push   %rbp
+    0.00 :   402429: mov    $0x186a0,%ebp
+    0.00 :   40242e: push   %rbx
+    0.00 :   40242f: sub    $0xe8,%rsp
+         : 16     // parameters
+         : 17     const size_t maxsteps = (argc>1)?(std::stol(argv[1])):100000;
+    0.00 :   402436: cmp    $0x1,%edi
+    0.00 :   402439: jg     402648 <main+0x228>
+         : 17     const size_t n = (argc>2)?(std::stol(argv[2])):501;
+    0.00 :   40243f: vmovsd 0x1cd9(%rip),%xmm2        # 404120 <_IO_stdin_used+0x120>
+    0.00 :   402447: mov    $0x1f5,%r12d
+    0.00 :   40244d: vmovsd %xmm2,0x8(%rsp)
+         : 21     const double abstol = (argc>3)?(std::stod(argv[3])):1.0e-6;
+         : 22     const double fraction = 0.1;
+         : 23     // initialize
+         : 24     rmatrix<double> V = init(n,n,fraction);
+    0.00 :   402453: mov    0x1cce(%rip),%rax        # 404128 <_IO_stdin_used+0x128>
+    0.00 :   40245a: mov    %r12,%rdx
+    0.00 :   40245d: vmovq  %rax,%xmm0
+    0.00 :   402462: mov    %r12,%rsi
+    0.00 :   402465: lea    0x40(%rsp),%rdi
+    0.00 :   40246a: call   4036a0 <init(unsigned long, unsigned long, double)>
+         : 31     int std::accumulate<long const*, int, std::multiplies<long> >(long const*, long const*, int, std::multiplies<long>):
+         : 169    // concept requirements
+         : 170    __glibcxx_function_requires(_InputIteratorConcept<_InputIterator>)
+         : 171    __glibcxx_requires_valid_range(__first, __last);
+         :
+         : 173    for (; __first != __last; ++__first)
+         : 174    __init = __binary_op(_GLIBCXX_MOVE_IF_20(__init), *__first);
+    0.00 :   40246f: movslq 0x60(%rsp),%rbx
+         : 176    ra::detail::shared_buffer<double>::shared_buffer(long):
+         : 97     using size_type = ::ra::size_type;
+         : 98     inline shared_buffer() noexcept {
+         : 99     uninit();
+         : 100    }
+         : 101    explicit inline shared_buffer(size_type asize)
+         : 102    : data_(nullptr), orig_(nullptr), size_(0), refs_(nullptr) {
+    0.00 :   402474: movq   $0x0,0x90(%rsp)
+         : 104    std::multiplies<long>::operator()(long const&, long const&) const:
+         : 210    struct multiplies : public binary_function<_Tp, _Tp, _Tp>
+         : 211    {
+         : 212    _GLIBCXX14_CONSTEXPR
+         : 213    _Tp
+         : 214    operator()(const _Tp& __x, const _Tp& __y) const
+         : 215    { return __x * __y; }
+    0.00 :   402480: imul   0x68(%rsp),%rbx
+         : 217    ra::detail::shared_buffer<double>::shared_buffer(long):
+    0.00 :   402486: movq   $0x0,0x98(%rsp)
+    0.00 :   402492: movq   $0x0,0xa0(%rsp)
+         : 99     ra::rarray<double, 2>::rarray(long const*):
+         : 720    size_type n10)
+         : 721    : buffer_(n0*n1*n2*n3*n4*n5*n6*n7*n8*n9*n10),
+         : 722    shape_({n0, n1, n2, n3, n4, n5, n6, n7, n8, n9, n10}, buffer_.begin())
+         : 723    {}
+         : 724    explicit inline rarray(const size_type* anextent)
+         : 725    : buffer_(std::accumulate(anextent, anextent+R, 1, std::multiplies<size_type>())),
+    0.00 :   40249e: movslq %ebx,%rbx
+         : 727    ra::detail::shared_buffer<double>::shared_buffer(long):
+         : 98     auto to_be_data = std::unique_ptr<T[]>(new T[asize]);
+    0.00 :   4024a1: mov    %rbx,%rax
+    0.00 :   4024a4: shr    $0x3c,%rax
+         : 97     : data_(nullptr), orig_(nullptr), size_(0), refs_(nullptr) {
+    0.00 :   4024a8: movq   $0x0,0xa8(%rsp)
+         : 98     auto to_be_data = std::unique_ptr<T[]>(new T[asize]);
+    0.00 :   4024b4: jne    402250 <main.cold>
+    0.00 :   4024ba: lea    0x0(,%rbx,8),%rdi
+    0.00 :   4024c2: call   4020f0 <operator new[](unsigned long)@plt>
+         : 99     refs_ = new std::atomic<int>(1);
+    0.00 :   4024c7: mov    $0x4,%edi
+         : 98     auto to_be_data = std::unique_ptr<T[]>(new T[asize]);
+    0.00 :   4024cc: mov    %rax,%r12
+         : 99     refs_ = new std::atomic<int>(1);
+    0.00 :   4024cf: call   402080 <operator new(unsigned long)@plt>
+         : 101    std::__atomic_base<int>::__atomic_base(int):
+         : 345    __atomic_base(const __atomic_base&) = delete;
+         : 346    __atomic_base& operator=(const __atomic_base&) = delete;
+         : 347    __atomic_base& operator=(const __atomic_base&) volatile = delete;
+         :
+         : 349    // Requires __int_type convertible to _M_i.
+         : 350    constexpr __atomic_base(__int_type __i) noexcept : _M_i (__i) { }
+    0.00 :   4024d4: movl   $0x1,(%rax)
+         : 352    ra::rarray<double, 2>::rarray(long const*):
+         : 721    shape_(reinterpret_cast<const std::array<size_type, R>&>(*anextent), buffer_.begin())
+    0.00 :   4024da: lea    0x60(%rsp),%r13
+         : 723    ra::detail::shared_buffer<double>::shared_buffer(long):
+         : 100    data_ = to_be_data.release();
+    0.00 :   4024df: vpbroadcastq %r12,%xmm0
+         : 102    ra::rarray<double, 2>::rarray(long const*):
+         : 721    shape_(reinterpret_cast<const std::array<size_type, R>&>(*anextent), buffer_.begin())
+    0.00 :   4024e5: mov    %r12,%rdx
+    0.00 :   4024e8: mov    %r13,%rsi
+    0.00 :   4024eb: lea    0xb0(%rsp),%rdi
+         : 725    ra::detail::shared_buffer<double>::shared_buffer(long):
+         : 99     refs_ = new std::atomic<int>(1);
+    0.00 :   4024f3: mov    %rax,0xa8(%rsp)
+         : 102    size_ = asize;
+    0.00 :   4024fb: mov    %rbx,0xa0(%rsp)
+         : 100    data_ = to_be_data.release();
+    0.00 :   402503: vmovdqa %xmm0,0x90(%rsp)
+         : 102    ra::rarray<double, 2>::rarray(long const*):
+         : 721    shape_(reinterpret_cast<const std::array<size_type, R>&>(*anextent), buffer_.begin())
+    0.00 :   40250c: call   402d70 <ra::detail::shared_shape<double, 2>::shared_shape(std::array<long, 2ul> const&, double*)>
+         : 723    main():
+         : 25     rmatrix<double> Vprev(V.shape());
+         : 26     // iterate
+         : 27     size_t step = 0;
+         : 28     for (step = 0; step < maxsteps; step++) {
+    0.00 :   402511: xor    %r12d,%r12d
+    0.00 :   402514: lea    0x90(%rsp),%rbx
+    0.00 :   40251c: test   %rbp,%rbp
+    0.00 :   40251f: jne    402530 <main+0x110>
+    0.00 :   402521: jmp    40256c <main+0x14c>
+    0.00 :   402523: nopl   0x0(%rax,%rax,1)
+    0.00 :   402528: inc    %r12
+    0.00 :   40252b: cmp    %rbp,%r12
+    0.00 :   40252e: je     40256c <main+0x14c>
+         : 26     apply_average(V, Vprev);
+    0.00 :   402530: mov    %rbx,%rsi
+    0.00 :   402533: lea    0x40(%rsp),%rdi
+    0.00 :   402538: call   403830 <apply_average(ra::rarray<double, 2>&, ra::rarray<double, 2>&)>
+         : 27     set_boundary_condition(V, fraction);
+  100.00 :   40253d: mov    0x1be4(%rip),%rax        # 404128 <_IO_stdin_used+0x128> // laplace.cpp:27
+    0.00 :   402544: lea    0x40(%rsp),%rdi
+    0.00 :   402549: vmovq  %rax,%xmm0
+    0.00 :   40254e: call   403480 <set_boundary_condition(ra::rarray<double, 2>&, double)>
+         : 28     const double maxdiff = get_max_diff(V, Vprev);
+    0.00 :   402553: mov    %rbx,%rsi
+    0.00 :   402556: lea    0x40(%rsp),%rdi
+    0.00 :   40255b: call   4037b0 <get_max_diff(ra::rarray<double, 2> const&, ra::rarray<double, 2> const&)>
+         : 29     if (maxdiff < abstol)
+    0.00 :   402560: vmovsd 0x8(%rsp),%xmm1
+    0.00 :   402566: vcomisd %xmm0,%xmm1
+    0.00 :   40256a: jbe    402528 <main+0x108>
+         : 33     break; // convergence
+         : 34     }
+         : 35     // done, now output
+         : 36     ncoutput("laplace.nc", V);
+    0.00 :   40256c: lea    0x1f(%rsp),%rdx
+    0.00 :   402571: mov    $0x4040a5,%esi
+    0.00 :   402576: lea    0x20(%rsp),%rdi
+    0.00 :   40257b: call   402a30 <std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string<std::allocator<char> >(char const*, std::allocator<char> const&)>
+    0.00 :   402580: lea    0x40(%rsp),%rsi
+    0.00 :   402585: lea    0x20(%rsp),%rdi
+    0.00 :   40258a: call   403d50 <ncoutput(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, ra::rarray<double, 2> const&)>
+         : 36     std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::~basic_string():
+         : 803    /**
+         : 804    *  @brief  Destroy the string instance.
+         : 805    */
+         : 806    _GLIBCXX20_CONSTEXPR
+         : 807    ~basic_string()
+         : 808    { _M_dispose(); }
+    0.00 :   40258f: lea    0x20(%rsp),%rdi
+    0.00 :   402594: call   4021a0 <std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_dispose()@plt>
+         : 811    main():
+         : 35     // check and report if the calculation converged:
+         : 36     if (step < maxsteps) {
+    0.00 :   402599: cmp    %rbp,%r12
+    0.00 :   40259c: jb     402611 <main+0x1f1>
+         : 39     std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*):
+         : 620    operator<<(basic_ostream<char, _Traits>& __out, const char* __s)
+         : 621    {
+         : 622    if (!__s)
+         : 623    __out.setstate(ios_base::badbit);
+         : 624    else
+         : 625    __ostream_insert(__out, __s,
+    0.00 :   40259e: mov    $0x1b,%edx
+    0.00 :   4025a3: mov    $0x4040c7,%esi
+    0.00 :   4025a8: mov    $0x406040,%edi
+    0.00 :   4025ad: call   4021f0 <std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)@plt>
+         : 630    std::ostream::operator<<(unsigned long):
+         : 171    { return _M_insert(__n); }
+    0.00 :   4025b2: mov    %r12,%rsi
+    0.00 :   4025b5: mov    $0x406040,%edi
+    0.00 :   4025ba: call   402100 <std::ostream& std::ostream::_M_insert<unsigned long>(unsigned long)@plt>
+    0.00 :   4025bf: mov    %rax,%rdi
+         : 176    std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*):
+         : 620    __ostream_insert(__out, __s,
+    0.00 :   4025c2: mov    $0x7,%edx
+    0.00 :   4025c7: mov    $0x4040bf,%esi
+    0.00 :   4025cc: call   4021f0 <std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)@plt>
+         : 624    main():
+         : 40     std::cout << "#Converged in " << step << " steps\n";
+         : 41     return 0;
+         : 42     } else {
+         : 43     std::cout << "#No convergence even after " << step << " steps\n";
+         : 44     return 1;
+    0.00 :   4025d1: mov    $0x1,%ebp
+         : 46     ra::detail::shared_shape<double, 2>::~shared_shape():
+         : 455    decref();
+    0.00 :   4025d6: lea    0xb0(%rsp),%rdi
+    0.00 :   4025de: call   402d00 <ra::detail::shared_shape<double, 2>::decref()>
+         : 458    ra::detail::shared_buffer<double>::~shared_buffer():
+         : 136    decref();
+    0.00 :   4025e3: mov    %rbx,%rdi
+    0.00 :   4025e6: call   402ca0 <ra::detail::shared_buffer<double>::decref()>
+         : 139    ra::detail::shared_shape<double, 2>::~shared_shape():
+         : 455    decref();
+    0.00 :   4025eb: mov    %r13,%rdi
+    0.00 :   4025ee: call   402d00 <ra::detail::shared_shape<double, 2>::decref()>
+         : 458    ra::detail::shared_buffer<double>::~shared_buffer():
+         : 136    decref();
+    0.00 :   4025f3: lea    0x40(%rsp),%rdi
+    0.00 :   4025f8: call   402ca0 <ra::detail::shared_buffer<double>::decref()>
+         : 139    main():
+         : 42     }
+         : 43     }
+    0.00 :   4025fd: add    $0xe8,%rsp
+    0.00 :   402604: pop    %rbx
+    0.00 :   402605: mov    %ebp,%eax
+    0.00 :   402607: pop    %rbp
+    0.00 :   402608: pop    %r12
+    0.00 :   40260a: pop    %r13
+    0.00 :   40260c: pop    %r14
+    0.00 :   40260e: pop    %r15
+    0.00 :   402610: ret
+         : 53     std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*):
+    0.00 :   402611: mov    $0xe,%edx
+    0.00 :   402616: mov    $0x4040b0,%esi
+    0.00 :   40261b: mov    $0x406040,%edi
+    0.00 :   402620: call   4021f0 <std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)@plt>
+         : 624    std::ostream::operator<<(unsigned long):
+         : 171    { return _M_insert(__n); }
+    0.00 :   402625: mov    %r12,%rsi
+    0.00 :   402628: mov    $0x406040,%edi
+    0.00 :   40262d: call   402100 <std::ostream& std::ostream::_M_insert<unsigned long>(unsigned long)@plt>
+    0.00 :   402632: mov    %rax,%rdi
+         : 176    std::basic_ostream<char, std::char_traits<char> >& std::operator<< <std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*):
+         : 620    __ostream_insert(__out, __s,
+    0.00 :   402635: mov    $0x7,%edx
+    0.00 :   40263a: mov    $0x4040bf,%esi
+    0.00 :   40263f: call   4021f0 <std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)@plt>
+         : 624    main():
+         : 37     return 0;
+    0.00 :   402644: xor    %ebp,%ebp
+    0.00 :   402646: jmp    4025d6 <main+0x1b6>
+    0.00 :   402648: mov    %rsi,%r14
+         : 16     const size_t maxsteps = (argc>1)?(std::stol(argv[1])):100000;
+    0.00 :   40264b: lea    0x90(%rsp),%rbx
+    0.00 :   402653: mov    0x8(%rsi),%rsi
+    0.00 :   402657: lea    0x40(%rsp),%rdx
+    0.00 :   40265c: mov    %edi,%r13d
+    0.00 :   40265f: mov    %rbx,%rdi
+    0.00 :   402662: call   402a30 <std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string<std::allocator<char> >(char const*, std::allocator<char> const&)>
+         : 23     std::__cxx11::stol(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int):
+         : 3985   { return __gnu_cxx::__stoa<long, int>(&std::strtol, "stoi", __str.c_str(),
+         : 3986   __idx, __base); }
+         :
+         : 3988   inline long
+         : 3989   stol(const string& __str, size_t* __idx = 0, int __base = 10)
+         : 3990   { return __gnu_cxx::__stoa(&std::strtol, "stol", __str.c_str(),
+    0.00 :   402667: mov    0x90(%rsp),%rdx
+    0.00 :   40266f: mov    $0xa,%r8d
+    0.00 :   402675: xor    %ecx,%ecx
+    0.00 :   402677: mov    $0x40409b,%esi
+    0.00 :   40267c: mov    $0x4021d0,%edi
+    0.00 :   402681: call   402990 <long __gnu_cxx::__stoa<long, long, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)>
+         : 3997   std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::~basic_string():
+         : 803    { _M_dispose(); }
+    0.00 :   402686: mov    %rbx,%rdi
+         : 805    std::__cxx11::stol(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int):
+         : 3985   { return __gnu_cxx::__stoa(&std::strtol, "stol", __str.c_str(),
+    0.00 :   402689: mov    %rax,%rbp
+         : 3987   std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::~basic_string():
+         : 803    { _M_dispose(); }
+    0.00 :   40268c: call   4021a0 <std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_dispose()@plt>
+         : 805    main():
+         : 17     const size_t n = (argc>2)?(std::stol(argv[2])):501;
+    0.00 :   402691: cmp    $0x2,%r13d
+    0.00 :   402695: je     40243f <main+0x1f>
+    0.00 :   40269b: mov    0x10(%r14),%rsi
+    0.00 :   40269f: lea    0x40(%rsp),%rdx
+    0.00 :   4026a4: mov    %rbx,%rdi
+    0.00 :   4026a7: call   402a30 <std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string<std::allocator<char> >(char const*, std::allocator<char> const&)>
+         : 24     std::__cxx11::stol(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int):
+         : 3985   { return __gnu_cxx::__stoa(&std::strtol, "stol", __str.c_str(),
+    0.00 :   4026ac: mov    0x90(%rsp),%rdx
+    0.00 :   4026b4: mov    $0xa,%r8d
+    0.00 :   4026ba: xor    %ecx,%ecx
+    0.00 :   4026bc: mov    $0x40409b,%esi
+    0.00 :   4026c1: mov    $0x4021d0,%edi
+    0.00 :   4026c6: call   402990 <long __gnu_cxx::__stoa<long, long, char, int>(long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)>
+         : 3992   std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::~basic_string():
+         : 803    { _M_dispose(); }
+    0.00 :   4026cb: mov    %rbx,%rdi
+         : 805    std::__cxx11::stol(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, unsigned long*, int):
+         : 3985   { return __gnu_cxx::__stoa(&std::strtol, "stol", __str.c_str(),
+    0.00 :   4026ce: mov    %rax,%r12
+         : 3987   std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::~basic_string():
+         : 803    { _M_dispose(); }
+    0.00 :   4026d1: call   4021a0 <std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_dispose()@plt>
+         : 805    main():
+         : 18     const double abstol = (argc>3)?(std::stod(argv[3])):1.0e-6;
+    0.00 :   4026d6: cmp    $0x3,%r13d
+    0.00 :   4026da: je     40273e <main+0x31e>
+    0.00 :   4026dc: mov    0x18(%r14),%rsi
+    0.00 :   4026e0: lea    0x20(%rsp),%rdx
+    0.00 :   4026e5: mov    %rbx,%rdi
+    0.00 :   4026e8: call   402a30 <std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string<std::allocator<char> >(char const*, std::allocator<char> const&)>
+         : 25     __gnu_cxx::__stoa<double, double, char>(double (*)(char const*, char**), char const*, char const*, unsigned long*)::_Save_errno::_Save_errno():
+         : 63     _Ret __ret;
+         :
+         : 65     _CharT* __endptr;
+         :
+         : 67     struct _Save_errno {
+         : 68     _Save_errno() : _M_errno(errno) { errno = 0; }
+    0.00 :   4026ed: call   402210 <__errno_location@plt>
+    0.00 :   4026f2: mov    (%rax),%r15d
+    0.00 :   4026f5: mov    %rax,%r13
+    0.00 :   4026f8: xor    %eax,%eax
+         : 73     std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_data() const:
+         : 234    { return _M_dataplus._M_p; }
+    0.00 :   4026fa: mov    0x90(%rsp),%r14
+         : 236    __gnu_cxx::__stoa<double, double, char>(double (*)(char const*, char**), char const*, char const*, unsigned long*)::_Save_errno::_Save_errno():
+    0.00 :   402702: mov    %eax,0x0(%r13)
+         : 64     double __gnu_cxx::__stoa<double, double, char>(double (*)(char const*, char**), char const*, char const*, unsigned long*):
+         : 80     return __val < _TRet(__numeric_traits<int>::__min)
+         : 81     || __val > _TRet(__numeric_traits<int>::__max);
+         : 82     }
+         : 83     };
+         :
+         : 85     const _TRet __tmp = __convf(__str, &__endptr, __base...);
+    0.00 :   402706: lea    0x40(%rsp),%rsi
+    0.00 :   40270b: mov    %r14,%rdi
+    0.00 :   40270e: call   402240 <strtod@plt>
+    0.00 :   402713: vmovsd %xmm0,0x8(%rsp)
+         :
+         : 83     if (__endptr == __str)
+    0.00 :   402719: cmp    0x40(%rsp),%r14
+    0.00 :   40271e: je     40275b <main+0x33b>
+         : 84     std::__throw_invalid_argument(__name);
+         : 85     else if (errno == ERANGE
+    0.00 :   402720: mov    0x0(%r13),%eax
+         : 85     || _Range_chk::_S_chk(__tmp, std::is_same<_Ret, int>{}))
+    0.00 :   402724: cmp    $0x22,%eax
+    0.00 :   402727: je     402751 <main+0x331>
+         : 88     __gnu_cxx::__stoa<double, double, char>(double (*)(char const*, char**), char const*, char const*, unsigned long*)::_Save_errno::~_Save_errno():
+         : 64     ~_Save_errno() { if (errno == 0) errno = _M_errno; }
+    0.00 :   402729: test   %eax,%eax
+    0.00 :   40272b: jne    402731 <main+0x311>
+    0.00 :   40272d: mov    %r15d,0x0(%r13)
+         : 68     std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::~basic_string():
+         : 803    { _M_dispose(); }
+    0.00 :   402731: mov    %rbx,%rdi
+    0.00 :   402734: call   4021a0 <std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_dispose()@plt>
+    0.00 :   402739: jmp    402453 <main+0x33>
+         : 807    main():
+    0.00 :   40273e: vmovsd 0x19da(%rip),%xmm3        # 404120 <_IO_stdin_used+0x120>
+    0.00 :   402746: vmovsd %xmm3,0x8(%rsp)
+    0.00 :   40274c: jmp    402453 <main+0x33>
+         : 806    double __gnu_cxx::__stoa<double, double, char>(double (*)(char const*, char**), char const*, char const*, unsigned long*):
+         : 86     std::__throw_out_of_range(__name);
+    0.00 :   402751: mov    $0x4040a0,%edi
+    0.00 :   402756: call   402140 <std::__throw_out_of_range(char const*)@plt>
+         : 83     std::__throw_invalid_argument(__name);
+    0.00 :   40275b: mov    $0x4040a0,%edi
+    0.00 :   402760: call   4020a0 <std::__throw_invalid_argument(char const*)@plt>
+         : 86     ra::detail::shared_shape<double, 2>::~shared_shape():
+         : 455    decref();
+    0.00 :   402765: mov    %rax,%rbp
+    0.00 :   402768: vzeroupper
+    0.00 :   40276b: jmp    402262 <main.cold+0x12>
+         : 459    ra::detail::shared_buffer<double>::~shared_buffer():
+         : 136    decref();
+    0.00 :   402770: mov    %rax,%rbx
+    0.00 :   402773: jmp    40227c <main.cold+0x2c>
+    0.00 :   402778: jmp    4022a6 <main.cold+0x56>
+         : 140    std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::~basic_string():
+    0.00 :   40277d: mov    %rax,%rbp
+    0.00 :   402780: jmp    4022c6 <main.cold+0x76>
+    0.00 :   402785: mov    %rax,%rbp
+    0.00 :   402788: jmp    402255 <main.cold+0x5>
+    0.00 :   40278d: mov    %rax,%rbp
+    0.00 :   402790: jmp    4022b3 <main.cold+0x63>
+         : 809    std::enable_if<std::is_convertible<double (*) [], double (*) []>::value, void>::type std::default_delete<double []>::operator()<double>(double*) const:
+         : 132    typename enable_if<is_convertible<_Up(*)[], _Tp(*)[]>::value>::type
+         : 133    operator()(_Up* __ptr) const
+         : 134    {
+         : 135    static_assert(sizeof(_Tp)>0,
+         : 136    "can't delete pointer to incomplete type");
+         : 137    delete [] __ptr;
+    0.00 :   402795: mov    %rax,%rbx
+    0.00 :   402798: jmp    4022f7 <main.cold+0xa7>
+         : 140    __gnu_cxx::__stoa<double, double, char>(double (*)(char const*, char**), char const*, char const*, unsigned long*)::_Save_errno::~_Save_errno():
+         : 64     ~_Save_errno() { if (errno == 0) errno = _M_errno; }
+    0.00 :   40279d: mov    %rax,%rbp
+    0.00 :   4027a0: jmp    4022d9 <main.cold+0x89>
+
+Sorted summary for file /cvmfs/soft.computecanada.ca/gentoo/2023/x86-64-v3/usr/lib64/libcrypto.so.3
+----------------------------------------------
+
+  100.00 libcrypto.so.3[1f3bdf]
+ Percent |	Source code & Disassembly of libcrypto.so.3 for cycles:u (1 samples, percent: local period)
+-----------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3      Disassembly of section .text:
+         :
+         : 5      00000000001f3b30 <OPENSSL_LH_insert>:
+         : 6      OPENSSL_LH_insert():
+    0.00 :   1f3b30: push   %r15
+    0.00 :   1f3b32: xor    %edx,%edx
+    0.00 :   1f3b34: push   %r14
+    0.00 :   1f3b36: push   %r13
+    0.00 :   1f3b38: push   %r12
+    0.00 :   1f3b3a: mov    %rsi,%r12
+    0.00 :   1f3b3d: push   %rbp
+    0.00 :   1f3b3e: push   %rbx
+    0.00 :   1f3b3f: mov    %rdi,%rbx
+    0.00 :   1f3b42: sub    $0x18,%rsp
+    0.00 :   1f3b46: mov    0x18(%rdi),%esi
+    0.00 :   1f3b49: mov    %fs:0x28,%rax
+    0.00 :   1f3b52: mov    %rax,0x8(%rsp)
+    0.00 :   1f3b57: xor    %eax,%eax
+    0.00 :   1f3b59: mov    0x38(%rdi),%rax
+    0.00 :   1f3b5d: movl   $0x0,0x40(%rdi)
+    0.00 :   1f3b64: shl    $0x8,%rax
+    0.00 :   1f3b68: div    %rsi
+    0.00 :   1f3b6b: cmp    0x28(%rdi),%rax
+    0.00 :   1f3b6f: jb     1f3bf8 <OPENSSL_LH_insert+0xc8>
+    0.00 :   1f3b75: mov    0x20(%rdi),%r13d
+    0.00 :   1f3b79: mov    0x24(%rdi),%r14d
+    0.00 :   1f3b7d: mov    0x1c(%rdi),%ebp
+    0.00 :   1f3b80: mov    (%rdi),%rax
+    0.00 :   1f3b83: lea    0x1(%r13),%edx
+    0.00 :   1f3b87: cmp    %r14d,%edx
+    0.00 :   1f3b8a: jae    1f3c48 <OPENSSL_LH_insert+0x118>
+    0.00 :   1f3b90: mov    %edx,0x20(%rdi)
+    0.00 :   1f3b93: mov    %rsi,%rcx
+    0.00 :   1f3b96: mov    %r13d,%r9d
+    0.00 :   1f3b99: lea    0x0(%r13,%r14,1),%edx
+    0.00 :   1f3b9e: add    $0x1,%ecx
+    0.00 :   1f3ba1: lea    (%rax,%r9,8),%rdi
+    0.00 :   1f3ba5: lea    (%rax,%rdx,8),%r8
+    0.00 :   1f3ba9: mov    %ecx,0x18(%rbx)
+    0.00 :   1f3bac: movq   $0x0,(%r8)
+    0.00 :   1f3bb3: mov    (%rdi),%rcx
+    0.00 :   1f3bb6: test   %rcx,%rcx
+    0.00 :   1f3bb9: je     1f3bf8 <OPENSSL_LH_insert+0xc8>
+    0.00 :   1f3bbb: mov    %ebp,%esi
+    0.00 :   1f3bbd: jmp    1f3bd9 <OPENSSL_LH_insert+0xa9>
+    0.00 :   1f3bbf: nop
+    0.00 :   1f3bc0: mov    0x8(%rcx),%rax
+    0.00 :   1f3bc4: mov    %rax,(%rdi)
+    0.00 :   1f3bc7: mov    (%r8),%rax
+    0.00 :   1f3bca: mov    %rax,0x8(%rcx)
+    0.00 :   1f3bce: mov    %rcx,(%r8)
+    0.00 :   1f3bd1: mov    (%rdi),%rcx
+    0.00 :   1f3bd4: test   %rcx,%rcx
+    0.00 :   1f3bd7: je     1f3bf8 <OPENSSL_LH_insert+0xc8>
+    0.00 :   1f3bd9: mov    0x10(%rcx),%rax
+    0.00 :   1f3bdd: xor    %edx,%edx
+  100.00 :   1f3bdf: div    %rsi // libcrypto.so.3[1f3bdf]
+    0.00 :   1f3be2: cmp    %rdx,%r9
+    0.00 :   1f3be5: jne    1f3bc0 <OPENSSL_LH_insert+0x90>
+    0.00 :   1f3be7: lea    0x8(%rcx),%rdi
+    0.00 :   1f3beb: mov    (%rdi),%rcx
+    0.00 :   1f3bee: test   %rcx,%rcx
+    0.00 :   1f3bf1: jne    1f3bd9 <OPENSSL_LH_insert+0xa9>
+    0.00 :   1f3bf3: nopl   0x0(%rax,%rax,1)
+    0.00 :   1f3bf8: mov    %rsp,%rdx
+    0.00 :   1f3bfb: mov    %r12,%rsi
+    0.00 :   1f3bfe: mov    %rbx,%rdi
+    0.00 :   1f3c01: call   1f3870 <getrn>
+    0.00 :   1f3c06: mov    %rax,%rbp
+    0.00 :   1f3c09: mov    (%rax),%rax
+    0.00 :   1f3c0c: test   %rax,%rax
+    0.00 :   1f3c0f: je     1f3ca0 <OPENSSL_LH_insert+0x170>
+    0.00 :   1f3c15: mov    (%rax),%rdx
+    0.00 :   1f3c18: mov    %r12,(%rax)
+    0.00 :   1f3c1b: mov    0x8(%rsp),%rax
+    0.00 :   1f3c20: sub    %fs:0x28,%rax
+    0.00 :   1f3c29: jne    1f3ceb <OPENSSL_LH_insert+0x1bb>
+    0.00 :   1f3c2f: add    $0x18,%rsp
+    0.00 :   1f3c33: mov    %rdx,%rax
+    0.00 :   1f3c36: pop    %rbx
+    0.00 :   1f3c37: pop    %rbp
+    0.00 :   1f3c38: pop    %r12
+    0.00 :   1f3c3a: pop    %r13
+    0.00 :   1f3c3c: pop    %r14
+    0.00 :   1f3c3e: pop    %r15
+    0.00 :   1f3c40: ret
+    0.00 :   1f3c41: nopl   0x0(%rax)
+    0.00 :   1f3c48: lea    0x0(%rbp,%rbp,1),%esi
+    0.00 :   1f3c4c: mov    $0xe0,%ecx
+    0.00 :   1f3c51: lea    0x138740(%rip),%rdx        # 32c398 <__func__.1+0x270>
+    0.00 :   1f3c58: mov    %rax,%rdi
+    0.00 :   1f3c5b: mov    %rsi,%r15
+    0.00 :   1f3c5e: shl    $0x3,%rsi
+    0.00 :   1f3c62: call   1f8f20 <CRYPTO_realloc>
+    0.00 :   1f3c67: test   %rax,%rax
+    0.00 :   1f3c6a: je     1f3ce0 <OPENSSL_LH_insert+0x1b0>
+    0.00 :   1f3c6c: mov    %rax,(%rbx)
+    0.00 :   1f3c6f: mov    %r15d,%edx
+    0.00 :   1f3c72: mov    %ebp,%ecx
+    0.00 :   1f3c74: xor    %esi,%esi
+    0.00 :   1f3c76: sub    %ebp,%edx
+    0.00 :   1f3c78: lea    (%rax,%rcx,8),%rdi
+    0.00 :   1f3c7c: shl    $0x3,%rdx
+    0.00 :   1f3c80: call   b0080 <memset@plt>
+    0.00 :   1f3c85: mov    0x18(%rbx),%ecx
+    0.00 :   1f3c88: mov    (%rbx),%rax
+    0.00 :   1f3c8b: mov    %ebp,0x24(%rbx)
+    0.00 :   1f3c8e: mov    %r15d,0x1c(%rbx)
+    0.00 :   1f3c92: movl   $0x0,0x20(%rbx)
+    0.00 :   1f3c99: jmp    1f3b96 <OPENSSL_LH_insert+0x66>
+    0.00 :   1f3c9e: xchg   %ax,%ax
+    0.00 :   1f3ca0: mov    $0x78,%edx
+    0.00 :   1f3ca5: lea    0x1386ec(%rip),%rsi        # 32c398 <__func__.1+0x270>
+    0.00 :   1f3cac: mov    $0x18,%edi
+    0.00 :   1f3cb1: call   1f8ed0 <CRYPTO_malloc>
+    0.00 :   1f3cb6: test   %rax,%rax
+    0.00 :   1f3cb9: je     1f3ce0 <OPENSSL_LH_insert+0x1b0>
+    0.00 :   1f3cbb: mov    (%rsp),%rdx
+    0.00 :   1f3cbf: mov    %r12,(%rax)
+    0.00 :   1f3cc2: movq   $0x0,0x8(%rax)
+    0.00 :   1f3cca: mov    %rdx,0x10(%rax)
+    0.00 :   1f3cce: xor    %edx,%edx
+    0.00 :   1f3cd0: mov    %rax,0x0(%rbp)
+    0.00 :   1f3cd4: addq   $0x1,0x38(%rbx)
+    0.00 :   1f3cd9: jmp    1f3c1b <OPENSSL_LH_insert+0xeb>
+    0.00 :   1f3cde: xchg   %ax,%ax
+    0.00 :   1f3ce0: addl   $0x1,0x40(%rbx)
+    0.00 :   1f3ce4: xor    %edx,%edx
+    0.00 :   1f3ce6: jmp    1f3c1b <OPENSSL_LH_insert+0xeb>
+    0.00 :   1f3ceb: call   b05f0 <__stack_chk_fail@plt>
+
+Sorted summary for file /cvmfs/soft.computecanada.ca/gentoo/2023/x86-64-v3/usr/lib64/libc.so.6
+----------------------------------------------
+
+  100.00 libc.so.6[9a450]
+ Percent |	Source code & Disassembly of libc.so.6 for cycles:u (1 samples, percent: local period)
+------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3     Disassembly of section .text:
+         :
+         : 5     000000000009a450 <__strdup@@GLIBC_2.2.5>:
+  100.00 :   9a450:  push   %rbp // libc.so.6[9a450]
+    0.00 :   9a451:  push   %rbx
+    0.00 :   9a452:  mov    %rdi,%rbx
+    0.00 :   9a455:  sub    $0x8,%rsp
+    0.00 :   9a459:  call   22110 <*ABS*+0x9ac80@plt>
+    0.00 :   9a45e:  lea    0x1(%rax),%rbp
+    0.00 :   9a462:  mov    %rbp,%rdi
+    0.00 :   9a465:  call   223b8 <malloc@plt>
+    0.00 :   9a46a:  test   %rax,%rax
+    0.00 :   9a46d:  je     9a483 <__strdup@@GLIBC_2.2.5+0x33>
+    0.00 :   9a46f:  add    $0x8,%rsp
+    0.00 :   9a473:  mov    %rbp,%rdx
+    0.00 :   9a476:  mov    %rbx,%rsi
+    0.00 :   9a479:  mov    %rax,%rdi
+    0.00 :   9a47c:  pop    %rbx
+    0.00 :   9a47d:  pop    %rbp
+    0.00 :   9a47e:  jmp    222b0 <*ABS*+0x97900@plt>
+    0.00 :   9a483:  pop    %rdx
+    0.00 :   9a484:  xor    %eax,%eax
+    0.00 :   9a486:  pop    %rbx
+    0.00 :   9a487:  pop    %rbp
+    0.00 :   9a488:  ret
+
+Sorted summary for file /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v4/Compiler/gcc12/hdf5/1.14.2/lib/libhdf5.so.310.2.0
+----------------------------------------------
+
+  100.00 H5Dint.c:0
+ Percent |	Source code & Disassembly of libhdf5.so.310.2.0 for cycles:u (1 samples, percent: local period)
+---------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3     Disassembly of section .text:
+         :
+         : 5     00000000000ce060 <H5D_close>:
+         : 6     H5D_close.localalias():
+  100.00 :   ce060:  push   %r15 // H5Dint.c:0
+    0.00 :   ce062:  push   %r14
+    0.00 :   ce064:  push   %r13
+    0.00 :   ce066:  push   %r12
+    0.00 :   ce068:  push   %rbp
+    0.00 :   ce069:  push   %rbx
+    0.00 :   ce06a:  mov    %rdi,%rbx
+    0.00 :   ce06d:  sub    $0x28,%rsp
+    0.00 :   ce071:  mov    0x30(%rdi),%rdx
+    0.00 :   ce075:  movb   $0x1,0x1f(%rsp)
+    0.00 :   ce07a:  subq   $0x1,(%rdx)
+    0.00 :   ce07e:  jne    ce310 <H5D_close+0x2b0>
+    0.00 :   ce084:  call   53750 <H5D__flush_real@plt>
+    0.00 :   ce089:  xor    %r12d,%r12d
+    0.00 :   ce08c:  test   %eax,%eax
+    0.00 :   ce08e:  js     ce450 <H5D_close+0x3f0>
+    0.00 :   ce094:  mov    0x30(%rbx),%r14
+    0.00 :   ce098:  mov    0xf8(%r14),%eax
+    0.00 :   ce09f:  movb   $0x1,0x8(%r14)
+    0.00 :   ce0a4:  mov    %r14,%rcx
+    0.00 :   ce0a7:  cmp    $0x2,%eax
+    0.00 :   ce0aa:  je     ce4a0 <H5D_close+0x440>
+    0.00 :   ce0b0:  jg     ce230 <H5D_close+0x1d0>
+    0.00 :   ce0b6:  test   %eax,%eax
+    0.00 :   ce0b8:  je     ce0f0 <H5D_close+0x90>
+    0.00 :   ce0ba:  cmp    $0x1,%eax
+    0.00 :   ce0bd:  jne    ce400 <H5D_close+0x3a0>
+    0.00 :   ce0c3:  mov    0xcd0(%r14),%rsi
+    0.00 :   ce0ca:  test   %rsi,%rsi
+    0.00 :   ce0cd:  je     ce0f0 <H5D_close+0x90>
+    0.00 :   ce0cf:  mov    0x34556a(%rip),%rdi        # 413640 <H5_sieve_buf_blk_free_list@@Base-0x2300>
+    0.00 :   ce0d6:  call   54f40 <H5FL_blk_free@plt>
+    0.00 :   ce0db:  mov    %rax,0xcd0(%r14)
+    0.00 :   ce0e2:  mov    0x30(%rbx),%r14
+    0.00 :   ce0e6:  cs nopw 0x0(%rax,%rax,1)
+    0.00 :   ce0f0:  mov    0x100(%r14),%rax
+    0.00 :   ce0f7:  mov    0x60(%rax),%rax
+    0.00 :   ce0fb:  test   %rax,%rax
+    0.00 :   ce0fe:  je     ce111 <H5D_close+0xb1>
+    0.00 :   ce100:  mov    %rbx,%rdi
+    0.00 :   ce103:  call   *%rax
+    0.00 :   ce105:  test   %eax,%eax
+    0.00 :   ce107:  js     ce8c0 <H5D_close+0x860>
+    0.00 :   ce10d:  mov    0x30(%rbx),%r14
+    0.00 :   ce111:  mov    0x1238(%r14),%rdi
+    0.00 :   ce118:  xor    %r13d,%r13d
+    0.00 :   ce11b:  call   4e5a0 <H5MM_xfree@plt>
+    0.00 :   ce120:  mov    0x30(%rbx),%rbp
+    0.00 :   ce124:  mov    %rax,0x1238(%r14)
+    0.00 :   ce12b:  mov    0x1240(%rbp),%rdi
+    0.00 :   ce132:  call   4e5a0 <H5MM_xfree@plt>
+    0.00 :   ce137:  mov    0x30(%rbx),%rsi
+    0.00 :   ce13b:  mov    %rax,0x1240(%rbp)
+    0.00 :   ce142:  mov    0x34636f(%rip),%rax        # 4144b8 <H5P_LST_DATASET_CREATE_ID_g@@Base-0x3bc8>
+    0.00 :   ce149:  mov    (%rax),%rax
+    0.00 :   ce14c:  cmp    %rax,0x28(%rsi)
+    0.00 :   ce150:  jne    ce538 <H5D_close+0x4d8>
+    0.00 :   ce156:  mov    0x8(%rbx),%rsi
+    0.00 :   ce15a:  mov    (%rbx),%rdi
+    0.00 :   ce15d:  lea    0x1e(%rsp),%rcx
+    0.00 :   ce162:  mov    $0x4,%edx
+    0.00 :   ce167:  call   50110 <H5AC_cork@plt>
+    0.00 :   ce16c:  test   %eax,%eax
+    0.00 :   ce16e:  js     ce810 <H5D_close+0x7b0>
+    0.00 :   ce174:  cmpb   $0x0,0x1e(%rsp)
+    0.00 :   ce179:  jne    ce610 <H5D_close+0x5b0>
+    0.00 :   ce17f:  mov    0x30(%rbx),%rax
+    0.00 :   ce183:  mov    0x10(%rax),%rdi
+    0.00 :   ce187:  call   51d30 <H5I_dec_ref@plt>
+    0.00 :   ce18c:  test   %eax,%eax
+    0.00 :   ce18e:  jns    ce5b8 <H5D_close+0x558>
+    0.00 :   ce194:  mov    $0x1,%ebp
+    0.00 :   ce199:  mov    0x8(%rbx),%rsi
+    0.00 :   ce19d:  mov    (%rbx),%rdi
+    0.00 :   ce1a0:  call   518e0 <H5FO_top_decr@plt>
+    0.00 :   ce1a5:  test   %eax,%eax
+    0.00 :   ce1a7:  js     ce7c0 <H5D_close+0x760>
+    0.00 :   ce1ad:  mov    0x8(%rbx),%rsi
+    0.00 :   ce1b1:  mov    (%rbx),%rdi
+    0.00 :   ce1b4:  call   51d40 <H5FO_delete@plt>
+    0.00 :   ce1b9:  test   %eax,%eax
+    0.00 :   ce1bb:  js     ce770 <H5D_close+0x710>
+    0.00 :   ce1c1:  lea    0x1f(%rsp),%rsi
+    0.00 :   ce1c6:  mov    %rbx,%rdi
+    0.00 :   ce1c9:  call   52ce0 <H5O_close@plt>
+    0.00 :   ce1ce:  test   %eax,%eax
+    0.00 :   ce1d0:  js     ce720 <H5D_close+0x6c0>
+    0.00 :   ce1d6:  cmpb   $0x0,0x1f(%rsp)
+    0.00 :   ce1db:  je     ce680 <H5D_close+0x620>
+    0.00 :   ce1e1:  movq   $0x0,(%rbx)
+    0.00 :   ce1e8:  mov    0x30(%rbx),%rsi
+    0.00 :   ce1ec:  lea    0x34790d(%rip),%rdi        # 415b00 <H5_H5D_shared_t_reg_free_list>
+    0.00 :   ce1f3:  call   4dc20 <H5FL_reg_free@plt>
+    0.00 :   ce1f8:  lea    0x18(%rbx),%rdi
+    0.00 :   ce1fc:  mov    %rax,0x30(%rbx)
+    0.00 :   ce200:  call   543d0 <H5G_name_free@plt>
+    0.00 :   ce205:  test   %eax,%eax
+    0.00 :   ce207:  js     ce380 <H5D_close+0x320>
+    0.00 :   ce20d:  mov    %rbx,%rsi
+    0.00 :   ce210:  lea    0x347929(%rip),%rdi        # 415b40 <H5_H5D_t_reg_free_list>
+    0.00 :   ce217:  call   4dc20 <H5FL_reg_free@plt>
+    0.00 :   ce21c:  test   %bpl,%bpl
+    0.00 :   ce21f:  je     ce36a <H5D_close+0x30a>
+    0.00 :   ce225:  jmp    ce38f <H5D_close+0x32f>
+    0.00 :   ce22a:  nopw   0x0(%rax,%rax,1)
+    0.00 :   ce230:  cmp    $0x3,%eax
+    0.00 :   ce233:  jne    ce400 <H5D_close+0x3a0>
+    0.00 :   ce239:  xor    %r13d,%r13d
+    0.00 :   ce23c:  cmpq   $0x0,0x888(%r14)
+    0.00 :   ce244:  je     ce0f0 <H5D_close+0x90>
+    0.00 :   ce24a:  lea    0x0(,%r13,8),%r10
+    0.00 :   ce252:  mov    0x890(%rcx),%rax
+    0.00 :   ce259:  sub    %r13,%r10
+    0.00 :   ce25c:  shl    $0x5,%r10
+    0.00 :   ce260:  mov    0x28(%rax,%r10,1),%rdi
+    0.00 :   ce265:  mov    %r10,%r15
+    0.00 :   ce268:  test   %rdi,%rdi
+    0.00 :   ce26b:  je     ce600 <H5D_close+0x5a0>
+    0.00 :   ce271:  call   ce060 <H5D_close>
+    0.00 :   ce276:  test   %eax,%eax
+    0.00 :   ce278:  js     ce948 <H5D_close+0x8e8>
+    0.00 :   ce27e:  mov    0x30(%rbx),%rcx
+    0.00 :   ce282:  mov    0x890(%rcx),%rax
+    0.00 :   ce289:  mov    %rcx,%r14
+    0.00 :   ce28c:  add    %r15,%rax
+    0.00 :   ce28f:  movq   $0x0,0x28(%rax)
+    0.00 :   ce297:  xor    %ebp,%ebp
+    0.00 :   ce299:  cmpq   $0x0,0x68(%rax)
+    0.00 :   ce29e:  je     ce2f8 <H5D_close+0x298>
+    0.00 :   ce2a0:  mov    0x58(%rax),%rax
+    0.00 :   ce2a4:  mov    %rbp,%r11
+    0.00 :   ce2a7:  shl    $0x6,%r11
+    0.00 :   ce2ab:  mov    0x28(%rax,%r11,1),%rdi
+    0.00 :   ce2b0:  test   %rdi,%rdi
+    0.00 :   ce2b3:  je     ce520 <H5D_close+0x4c0>
+    0.00 :   ce2b9:  mov    %r11,0x8(%rsp)
+    0.00 :   ce2be:  call   ce060 <H5D_close>
+    0.00 :   ce2c3:  mov    0x8(%rsp),%r11
+    0.00 :   ce2c8:  test   %eax,%eax
+    0.00 :   ce2ca:  js     ce560 <H5D_close+0x500>
+    0.00 :   ce2d0:  mov    0x30(%rbx),%rcx
+    0.00 :   ce2d4:  mov    0x890(%rcx),%rax
+    0.00 :   ce2db:  mov    %rcx,%r14
+    0.00 :   ce2de:  add    %r15,%rax
+    0.00 :   ce2e1:  mov    0x58(%rax),%rsi
+    0.00 :   ce2e5:  movq   $0x0,0x28(%rsi,%r11,1)
+    0.00 :   ce2ee:  add    $0x1,%rbp
+    0.00 :   ce2f2:  cmp    0x68(%rax),%rbp
+    0.00 :   ce2f6:  jb     ce2a0 <H5D_close+0x240>
+    0.00 :   ce2f8:  add    $0x1,%r13
+    0.00 :   ce2fc:  cmp    0x888(%rcx),%r13
+    0.00 :   ce303:  jb     ce24a <H5D_close+0x1ea>
+    0.00 :   ce309:  jmp    ce0f0 <H5D_close+0x90>
+    0.00 :   ce30e:  xchg   %ax,%ax
+    0.00 :   ce310:  mov    0x8(%rdi),%rsi
+    0.00 :   ce314:  mov    (%rdi),%rdi
+    0.00 :   ce317:  call   518e0 <H5FO_top_decr@plt>
+    0.00 :   ce31c:  test   %eax,%eax
+    0.00 :   ce31e:  js     ce912 <H5D_close+0x8b2>
+    0.00 :   ce324:  mov    0x8(%rbx),%rsi
+    0.00 :   ce328:  mov    (%rbx),%rdi
+    0.00 :   ce32b:  call   54740 <H5FO_top_count@plt>
+    0.00 :   ce330:  test   %rax,%rax
+    0.00 :   ce333:  jne    ce3c0 <H5D_close+0x360>
+    0.00 :   ce339:  xor    %esi,%esi
+    0.00 :   ce33b:  mov    %rbx,%rdi
+    0.00 :   ce33e:  call   52ce0 <H5O_close@plt>
+    0.00 :   ce343:  test   %eax,%eax
+    0.00 :   ce345:  js     ce9e7 <H5D_close+0x987>
+    0.00 :   ce34b:  lea    0x18(%rbx),%rdi
+    0.00 :   ce34f:  call   543d0 <H5G_name_free@plt>
+    0.00 :   ce354:  test   %eax,%eax
+    0.00 :   ce356:  js     ce380 <H5D_close+0x320>
+    0.00 :   ce358:  mov    %rbx,%rsi
+    0.00 :   ce35b:  lea    0x3477de(%rip),%rdi        # 415b40 <H5_H5D_t_reg_free_list>
+    0.00 :   ce362:  xor    %r12d,%r12d
+    0.00 :   ce365:  call   4dc20 <H5FL_reg_free@plt>
+    0.00 :   ce36a:  add    $0x28,%rsp
+    0.00 :   ce36e:  mov    %r12d,%eax
+    0.00 :   ce371:  pop    %rbx
+    0.00 :   ce372:  pop    %rbp
+    0.00 :   ce373:  pop    %r12
+    0.00 :   ce375:  pop    %r13
+    0.00 :   ce377:  pop    %r14
+    0.00 :   ce379:  pop    %r15
+    0.00 :   ce37b:  ret
+    0.00 :   ce37c:  nopl   0x0(%rax)
+    0.00 :   ce380:  mov    %rbx,%rsi
+    0.00 :   ce383:  lea    0x3477b6(%rip),%rdi        # 415b40 <H5_H5D_t_reg_free_list>
+    0.00 :   ce38a:  call   4dc20 <H5FL_reg_free@plt>
+    0.00 :   ce38f:  mov    0x345972(%rip),%rax        # 413d08 <H5E_DATASET_g@@Base-0x25e8>
+    0.00 :   ce396:  mov    $0x802,%ecx
+    0.00 :   ce39b:  mov    (%rax),%r9
+    0.00 :   ce39e:  mov    0x346303(%rip),%rax        # 4146a8 <H5E_ERR_CLS_g@@Base-0x1d18>
+    0.00 :   ce3a5:  mov    (%rax),%r8
+    0.00 :   ce3a8:  lea    0x278d31(%rip),%rax        # 3470e0 <_fini+0x20230>
+    0.00 :   ce3af:  push   %rax
+    0.00 :   ce3b0:  mov    0x3455b9(%rip),%rax        # 413970 <H5E_CANTINIT_g@@Base-0x2828>
+    0.00 :   ce3b7:  push   (%rax)
+    0.00 :   ce3b9:  jmp    ce42a <H5D_close+0x3ca>
+    0.00 :   ce3bb:  nopl   0x0(%rax,%rax,1)
+    0.00 :   ce3c0:  mov    %rbx,%rdi
+    0.00 :   ce3c3:  call   54ef0 <H5O_loc_free@plt>
+    0.00 :   ce3c8:  test   %eax,%eax
+    0.00 :   ce3ca:  jns    ce34b <H5D_close+0x2eb>
+    0.00 :   ce3d0:  lea    0x278ce1(%rip),%rax        # 3470b8 <_fini+0x20208>
+    0.00 :   ce3d7:  mov    $0x7f6,%ecx
+    0.00 :   ce3dc:  push   %rax
+    0.00 :   ce3dd:  mov    0x345a2c(%rip),%rax        # 413e10 <H5E_CANTRELEASE_g@@Base-0x2378>
+    0.00 :   ce3e4:  push   (%rax)
+    0.00 :   ce3e6:  mov    0x34591b(%rip),%rax        # 413d08 <H5E_DATASET_g@@Base-0x25e8>
+    0.00 :   ce3ed:  mov    (%rax),%r9
+    0.00 :   ce3f0:  mov    0x3462b1(%rip),%rax        # 4146a8 <H5E_ERR_CLS_g@@Base-0x1d18>
+    0.00 :   ce3f7:  mov    (%rax),%r8
+    0.00 :   ce3fa:  jmp    ce42a <H5D_close+0x3ca>
+    0.00 :   ce3fc:  nopl   0x0(%rax)
+    0.00 :   ce400:  mov    0x345f19(%rip),%rax        # 414320 <H5E_IO_g@@Base-0x2000>
+    0.00 :   ce407:  mov    $0x7a9,%ecx
+    0.00 :   ce40c:  mov    (%rax),%r9
+    0.00 :   ce40f:  mov    0x346292(%rip),%rax        # 4146a8 <H5E_ERR_CLS_g@@Base-0x1d18>
+    0.00 :   ce416:  mov    (%rax),%r8
+    0.00 :   ce419:  lea    0x25e7c1(%rip),%rax        # 32cbe1 <_fini+0x5d31>
+    0.00 :   ce420:  push   %rax
+    0.00 :   ce421:  mov    0x3458c0(%rip),%rax        # 413ce8 <H5E_UNSUPPORTED_g@@Base-0x21c8>
+    0.00 :   ce428:  push   (%rax)
+    0.00 :   ce42a:  lea    0x2a66f7(%rip),%rdx        # 374b28 <__func__.25>
+    0.00 :   ce431:  lea    0x25e741(%rip),%rsi        # 32cb79 <_fini+0x5cc9>
+    0.00 :   ce438:  xor    %edi,%edi
+    0.00 :   ce43a:  xor    %eax,%eax
+    0.00 :   ce43c:  call   532a0 <H5E_printf_stack@plt>
+    0.00 :   ce441:  mov    $0xffffffff,%r12d
+    0.00 :   ce447:  pop    %rax
+    0.00 :   ce448:  pop    %rdx
+    0.00 :   ce449:  jmp    ce36a <H5D_close+0x30a>
+    0.00 :   ce44e:  xchg   %ax,%ax
+    0.00 :   ce450:  mov    0x3458b1(%rip),%rax        # 413d08 <H5E_DATASET_g@@Base-0x25e8>
+    0.00 :   ce457:  mov    $0x75a,%ecx
+    0.00 :   ce45c:  lea    0x2a66c5(%rip),%rdx        # 374b28 <__func__.25>
+    0.00 :   ce463:  lea    0x25e70f(%rip),%rsi        # 32cb79 <_fini+0x5cc9>
+    0.00 :   ce46a:  xor    %edi,%edi
+    0.00 :   ce46c:  mov    $0xffffffff,%r12d
+    0.00 :   ce472:  mov    (%rax),%r9
+    0.00 :   ce475:  mov    0x34622c(%rip),%rax        # 4146a8 <H5E_ERR_CLS_g@@Base-0x1d18>
+    0.00 :   ce47c:  mov    (%rax),%r8
+    0.00 :   ce47f:  lea    0x278b22(%rip),%rax        # 346fa8 <_fini+0x200f8>
+    0.00 :   ce486:  push   %rax
+    0.00 :   ce487:  mov    0x345daa(%rip),%rax        # 414238 <H5E_WRITEERROR_g@@Base-0x2008>
+    0.00 :   ce48e:  push   (%rax)
+    0.00 :   ce490:  xor    %eax,%eax
+    0.00 :   ce492:  call   532a0 <H5E_printf_stack@plt>
+    0.00 :   ce497:  pop    %r11
+    0.00 :   ce499:  pop    %rbp
+    0.00 :   ce49a:  jmp    ce094 <H5D_close+0x34>
+    0.00 :   ce49f:  nop
+    0.00 :   ce4a0:  mov    0xe80(%r14),%rdi
+    0.00 :   ce4a7:  test   %rdi,%rdi
+    0.00 :   ce4aa:  je     ce4c0 <H5D_close+0x460>
+    0.00 :   ce4ac:  call   4eb70 <H5SL_close@plt>
+    0.00 :   ce4b1:  mov    0x30(%rbx),%r14
+    0.00 :   ce4b5:  movq   $0x0,0xe80(%r14)
+    0.00 :   ce4c0:  mov    0xe88(%r14),%rdi
+    0.00 :   ce4c7:  test   %rdi,%rdi
+    0.00 :   ce4ca:  je     ce4e0 <H5D_close+0x480>
+    0.00 :   ce4cc:  call   4f200 <H5S_close@plt>
+    0.00 :   ce4d1:  mov    0x30(%rbx),%r14
+    0.00 :   ce4d5:  movq   $0x0,0xe88(%r14)
+    0.00 :   ce4e0:  mov    0xe90(%r14),%rsi
+    0.00 :   ce4e7:  test   %rsi,%rsi
+    0.00 :   ce4ea:  je     ce0f0 <H5D_close+0x90>
+    0.00 :   ce4f0:  mov    0x345c31(%rip),%rdi        # 414128 <H5_H5D_piece_info_t_reg_free_list@@Base-0x1718>
+    0.00 :   ce4f7:  call   4dc20 <H5FL_reg_free@plt>
+    0.00 :   ce4fc:  mov    %rax,0xe90(%r14)
+    0.00 :   ce503:  mov    0x30(%rbx),%r14
+    0.00 :   ce507:  movq   $0x0,0xe90(%r14)
+    0.00 :   ce512:  jmp    ce0f0 <H5D_close+0x90>
+    0.00 :   ce517:  nopw   0x0(%rax,%rax,1)
+    0.00 :   ce520:  mov    0x890(%rcx),%rax
+    0.00 :   ce527:  mov    %rcx,%r14
+    0.00 :   ce52a:  add    %r15,%rax
+    0.00 :   ce52d:  jmp    ce2ee <H5D_close+0x28e>
+    0.00 :   ce532:  nopw   0x0(%rax,%rax,1)
+    0.00 :   ce538:  add    $0x90,%rsi
+    0.00 :   ce53f:  mov    $0xb,%edi
+    0.00 :   ce544:  call   51800 <H5O_msg_reset@plt>
+    0.00 :   ce549:  test   %eax,%eax
+    0.00 :   ce54b:  jns    ce860 <H5D_close+0x800>
+    0.00 :   ce551:  mov    $0x1,%r13d
+    0.00 :   ce557:  jmp    ce156 <H5D_close+0xf6>
+    0.00 :   ce55c:  nopl   0x0(%rax)
+    0.00 :   ce560:  mov    0x3457a1(%rip),%rax        # 413d08 <H5E_DATASET_g@@Base-0x25e8>
+    0.00 :   ce567:  xor    %edi,%edi
+    0.00 :   ce569:  mov    $0x79c,%ecx
+    0.00 :   ce56e:  lea    0x2a65b3(%rip),%rdx        # 374b28 <__func__.25>
+    0.00 :   ce575:  lea    0x25e5fd(%rip),%rsi        # 32cb79 <_fini+0x5cc9>
+    0.00 :   ce57c:  mov    $0xffffffff,%r12d
+    0.00 :   ce582:  mov    (%rax),%r9
+    0.00 :   ce585:  mov    0x34611c(%rip),%rax        # 4146a8 <H5E_ERR_CLS_g@@Base-0x1d18>
+    0.00 :   ce58c:  mov    (%rax),%r8
+    0.00 :   ce58f:  lea    0x278a3a(%rip),%rax        # 346fd0 <_fini+0x20120>
+    0.00 :   ce596:  push   %rax
+    0.00 :   ce597:  mov    0x3468b2(%rip),%rax        # 414e50 <H5E_CLOSEERROR_g@@Base-0x13e8>
+    0.00 :   ce59e:  push   (%rax)
+    0.00 :   ce5a0:  xor    %eax,%eax
+    0.00 :   ce5a2:  call   532a0 <H5E_printf_stack@plt>
+    0.00 :   ce5a7:  pop    %rdi
+    0.00 :   ce5a8:  pop    %r8
+    0.00 :   ce5aa:  mov    0x8(%rsp),%r11
+    0.00 :   ce5af:  jmp    ce2d0 <H5D_close+0x270>
+    0.00 :   ce5b4:  nopl   0x0(%rax)
+    0.00 :   ce5b8:  mov    0x30(%rbx),%rax
+    0.00 :   ce5bc:  mov    0x20(%rax),%rdi
+    0.00 :   ce5c0:  call   4f200 <H5S_close@plt>
+    0.00 :   ce5c5:  test   %eax,%eax
+    0.00 :   ce5c7:  js     ce194 <H5D_close+0x134>
+    0.00 :   ce5cd:  mov    0x30(%rbx),%rax
+    0.00 :   ce5d1:  mov    0x28(%rax),%rdi
+    0.00 :   ce5d5:  call   51d30 <H5I_dec_ref@plt>
+    0.00 :   ce5da:  test   %eax,%eax
+    0.00 :   ce5dc:  js     ce194 <H5D_close+0x134>
+    0.00 :   ce5e2:  mov    0x30(%rbx),%rax
+    0.00 :   ce5e6:  mov    0x30(%rax),%rdi
+    0.00 :   ce5ea:  call   51d30 <H5I_dec_ref@plt>
+    0.00 :   ce5ef:  shr    $0x1f,%eax
+    0.00 :   ce5f2:  mov    %eax,%ebp
+    0.00 :   ce5f4:  or     %r13d,%ebp
+    0.00 :   ce5f7:  jmp    ce199 <H5D_close+0x139>
+    0.00 :   ce5fc:  nopl   0x0(%rax)
+    0.00 :   ce600:  mov    %rcx,%r14
+    0.00 :   ce603:  add    %r10,%rax
+    0.00 :   ce606:  jmp    ce297 <H5D_close+0x237>
+    0.00 :   ce60b:  nopl   0x0(%rax,%rax,1)
+    0.00 :   ce610:  mov    0x8(%rbx),%rsi
+    0.00 :   ce614:  mov    (%rbx),%rdi
+    0.00 :   ce617:  xor    %ecx,%ecx
+    0.00 :   ce619:  mov    $0x2,%edx
+    0.00 :   ce61e:  call   50110 <H5AC_cork@plt>
+    0.00 :   ce623:  test   %eax,%eax
+    0.00 :   ce625:  jns    ce17f <H5D_close+0x11f>
+    0.00 :   ce62b:  mov    0x3456d6(%rip),%rax        # 413d08 <H5E_DATASET_g@@Base-0x25e8>
+    0.00 :   ce632:  mov    $0x7c3,%ecx
+    0.00 :   ce637:  lea    0x2a64ea(%rip),%rdx        # 374b28 <__func__.25>
+    0.00 :   ce63e:  lea    0x25e534(%rip),%rsi        # 32cb79 <_fini+0x5cc9>
+    0.00 :   ce645:  xor    %edi,%edi
+    0.00 :   ce647:  mov    $0xffffffff,%r12d
+    0.00 :   ce64d:  mov    (%rax),%r9
+    0.00 :   ce650:  mov    0x346051(%rip),%rax        # 4146a8 <H5E_ERR_CLS_g@@Base-0x1d18>
+    0.00 :   ce657:  mov    (%rax),%r8
+    0.00 :   ce65a:  lea    0x25e8c5(%rip),%rax        # 32cf26 <_fini+0x6076>
+    0.00 :   ce661:  push   %rax
+    0.00 :   ce662:  mov    0x345c47(%rip),%rax        # 4142b0 <H5E_CANTUNCORK_g@@Base-0x1ca0>
+    0.00 :   ce669:  push   (%rax)
+    0.00 :   ce66b:  xor    %eax,%eax
+    0.00 :   ce66d:  call   532a0 <H5E_printf_stack@plt>
+    0.00 :   ce672:  pop    %r15
+    0.00 :   ce674:  pop    %rax
+    0.00 :   ce675:  jmp    ce17f <H5D_close+0x11f>
+    0.00 :   ce67a:  nopw   0x0(%rax,%rax,1)
+    0.00 :   ce680:  mov    (%rbx),%rdi
+    0.00 :   ce683:  call   53b00 <H5F_get_shared@plt>
+    0.00 :   ce688:  test   %rax,%rax
+    0.00 :   ce68b:  je     ce1e1 <H5D_close+0x181>
+    0.00 :   ce691:  mov    (%rbx),%rdi
+    0.00 :   ce694:  call   54790 <H5F_get_evict_on_close@plt>
+    0.00 :   ce699:  test   %al,%al
+    0.00 :   ce69b:  je     ce1e1 <H5D_close+0x181>
+    0.00 :   ce6a1:  mov    0x8(%rbx),%rsi
+    0.00 :   ce6a5:  mov    (%rbx),%rdi
+    0.00 :   ce6a8:  call   4eff0 <H5AC_flush_tagged_metadata@plt>
+    0.00 :   ce6ad:  test   %eax,%eax
+    0.00 :   ce6af:  js     ce998 <H5D_close+0x938>
+    0.00 :   ce6b5:  mov    0x8(%rbx),%rsi
+    0.00 :   ce6b9:  mov    (%rbx),%rdi
+    0.00 :   ce6bc:  xor    %edx,%edx
+    0.00 :   ce6be:  call   4d480 <H5AC_evict_tagged_metadata@plt>
+    0.00 :   ce6c3:  test   %eax,%eax
+    0.00 :   ce6c5:  jns    ce1e1 <H5D_close+0x181>
+    0.00 :   ce6cb:  mov    0x346416(%rip),%rax        # 414ae8 <H5E_CACHE_g@@Base-0x17a0>
+    0.00 :   ce6d2:  mov    $0x7dc,%ecx
+    0.00 :   ce6d7:  lea    0x25e49b(%rip),%rsi        # 32cb79 <_fini+0x5cc9>
+    0.00 :   ce6de:  lea    0x2a6443(%rip),%rdx        # 374b28 <__func__.25>
+    0.00 :   ce6e5:  xor    %edi,%edi
+    0.00 :   ce6e7:  mov    $0xffffffff,%r12d
+    0.00 :   ce6ed:  mov    (%rax),%r9
+    0.00 :   ce6f0:  mov    0x345fb1(%rip),%rax        # 4146a8 <H5E_ERR_CLS_g@@Base-0x1d18>
+    0.00 :   ce6f7:  mov    (%rax),%r8
+    0.00 :   ce6fa:  lea    0x278997(%rip),%rax        # 347098 <_fini+0x201e8>
+    0.00 :   ce701:  push   %rax
+    0.00 :   ce702:  mov    0x346797(%rip),%rax        # 414ea0 <H5E_CANTFLUSH_g@@Base-0x1180>
+    0.00 :   ce709:  push   (%rax)
+    0.00 :   ce70b:  xor    %eax,%eax
+    0.00 :   ce70d:  call   532a0 <H5E_printf_stack@plt>
+    0.00 :   ce712:  pop    %rcx
+    0.00 :   ce713:  pop    %rsi
+    0.00 :   ce714:  jmp    ce1e1 <H5D_close+0x181>
+    0.00 :   ce719:  nopl   0x0(%rax)
+    0.00 :   ce720:  mov    0x3455e1(%rip),%rax        # 413d08 <H5E_DATASET_g@@Base-0x25e8>
+    0.00 :   ce727:  mov    $0x7d5,%ecx
+    0.00 :   ce72c:  lea    0x2a63f5(%rip),%rdx        # 374b28 <__func__.25>
+    0.00 :   ce733:  lea    0x25e43f(%rip),%rsi        # 32cb79 <_fini+0x5cc9>
+    0.00 :   ce73a:  xor    %edi,%edi
+    0.00 :   ce73c:  mov    $0xffffffff,%r12d
+    0.00 :   ce742:  mov    (%rax),%r9
+    0.00 :   ce745:  mov    0x345f5c(%rip),%rax        # 4146a8 <H5E_ERR_CLS_g@@Base-0x1d18>
+    0.00 :   ce74c:  mov    (%rax),%r8
+    0.00 :   ce74f:  lea    0x275e82(%rip),%rax        # 3445d8 <_fini+0x1d728>
+    0.00 :   ce756:  push   %rax
+    0.00 :   ce757:  mov    0x3466f2(%rip),%rax        # 414e50 <H5E_CLOSEERROR_g@@Base-0x13e8>
+    0.00 :   ce75e:  push   (%rax)
+    0.00 :   ce760:  xor    %eax,%eax
+    0.00 :   ce762:  call   532a0 <H5E_printf_stack@plt>
+    0.00 :   ce767:  pop    %r9
+    0.00 :   ce769:  pop    %r10
+    0.00 :   ce76b:  jmp    ce1d6 <H5D_close+0x176>
+    0.00 :   ce770:  mov    0x345591(%rip),%rax        # 413d08 <H5E_DATASET_g@@Base-0x25e8>
+    0.00 :   ce777:  mov    $0x7d0,%ecx
+    0.00 :   ce77c:  lea    0x2a63a5(%rip),%rdx        # 374b28 <__func__.25>
+    0.00 :   ce783:  xor    %edi,%edi
+    0.00 :   ce785:  lea    0x25e3ed(%rip),%rsi        # 32cb79 <_fini+0x5cc9>
+    0.00 :   ce78c:  mov    (%rax),%r9
+    0.00 :   ce78f:  mov    0x345f12(%rip),%rax        # 4146a8 <H5E_ERR_CLS_g@@Base-0x1d18>
+    0.00 :   ce796:  mov    (%rax),%r8
+    0.00 :   ce799:  lea    0x2788a8(%rip),%rax        # 347048 <_fini+0x20198>
+    0.00 :   ce7a0:  push   %rax
+    0.00 :   ce7a1:  mov    0x345668(%rip),%rax        # 413e10 <H5E_CANTRELEASE_g@@Base-0x2378>
+    0.00 :   ce7a8:  push   (%rax)
+    0.00 :   ce7aa:  xor    %eax,%eax
+    0.00 :   ce7ac:  call   532a0 <H5E_printf_stack@plt>
+    0.00 :   ce7b1:  pop    %r11
+    0.00 :   ce7b3:  pop    %r12
+    0.00 :   ce7b5:  mov    $0xffffffff,%r12d
+    0.00 :   ce7bb:  jmp    ce1c1 <H5D_close+0x161>
+    0.00 :   ce7c0:  mov    0x345541(%rip),%rax        # 413d08 <H5E_DATASET_g@@Base-0x25e8>
+    0.00 :   ce7c7:  mov    $0x7ce,%ecx
+    0.00 :   ce7cc:  lea    0x2a6355(%rip),%rdx        # 374b28 <__func__.25>
+    0.00 :   ce7d3:  lea    0x25e39f(%rip),%rsi        # 32cb79 <_fini+0x5cc9>
+    0.00 :   ce7da:  xor    %edi,%edi
+    0.00 :   ce7dc:  mov    $0xffffffff,%r12d
+    0.00 :   ce7e2:  mov    (%rax),%r9
+    0.00 :   ce7e5:  mov    0x345ebc(%rip),%rax        # 4146a8 <H5E_ERR_CLS_g@@Base-0x1d18>
+    0.00 :   ce7ec:  mov    (%rax),%r8
+    0.00 :   ce7ef:  lea    0x27882a(%rip),%rax        # 347020 <_fini+0x20170>
+    0.00 :   ce7f6:  push   %rax
+    0.00 :   ce7f7:  mov    0x345612(%rip),%rax        # 413e10 <H5E_CANTRELEASE_g@@Base-0x2378>
+    0.00 :   ce7fe:  push   (%rax)
+    0.00 :   ce800:  xor    %eax,%eax
+    0.00 :   ce802:  call   532a0 <H5E_printf_stack@plt>
+    0.00 :   ce807:  pop    %r13
+    0.00 :   ce809:  pop    %r14
+    0.00 :   ce80b:  jmp    ce1ad <H5D_close+0x14d>
+    0.00 :   ce810:  mov    0x3454f1(%rip),%rax        # 413d08 <H5E_DATASET_g@@Base-0x25e8>
+    0.00 :   ce817:  lea    0x2a630a(%rip),%rdx        # 374b28 <__func__.25>
+    0.00 :   ce81e:  mov    $0x7c0,%ecx
+    0.00 :   ce823:  xor    %edi,%edi
+    0.00 :   ce825:  lea    0x25e34d(%rip),%rsi        # 32cb79 <_fini+0x5cc9>
+    0.00 :   ce82c:  mov    $0xffffffff,%r12d
+    0.00 :   ce832:  mov    (%rax),%r9
+    0.00 :   ce835:  mov    0x345e6c(%rip),%rax        # 4146a8 <H5E_ERR_CLS_g@@Base-0x1d18>
+    0.00 :   ce83c:  mov    (%rax),%r8
+    0.00 :   ce83f:  lea    0x2787aa(%rip),%rax        # 346ff0 <_fini+0x20140>
+    0.00 :   ce846:  push   %rax
+    0.00 :   ce847:  mov    0x34534a(%rip),%rax        # 413b98 <H5E_CANTGET_g@@Base-0x25e8>
+    0.00 :   ce84e:  push   (%rax)
+    0.00 :   ce850:  xor    %eax,%eax
+    0.00 :   ce852:  call   532a0 <H5E_printf_stack@plt>
+    0.00 :   ce857:  pop    %rax
+    0.00 :   ce858:  pop    %rdx
+    0.00 :   ce859:  jmp    ce174 <H5D_close+0x114>
+    0.00 :   ce85e:  xchg   %ax,%ax
+    0.00 :   ce860:  mov    0x30(%rbx),%rax
+    0.00 :   ce864:  mov    $0x8,%edi
+    0.00 :   ce869:  lea    0xf8(%rax),%rsi
+    0.00 :   ce870:  call   51800 <H5O_msg_reset@plt>
+    0.00 :   ce875:  test   %eax,%eax
+    0.00 :   ce877:  js     ce551 <H5D_close+0x4f1>
+    0.00 :   ce87d:  mov    0x30(%rbx),%rax
+    0.00 :   ce881:  mov    $0x4,%edi
+    0.00 :   ce886:  lea    0x38(%rax),%rsi
+    0.00 :   ce88a:  call   51800 <H5O_msg_reset@plt>
+    0.00 :   ce88f:  test   %eax,%eax
+    0.00 :   ce891:  js     ce551 <H5D_close+0x4f1>
+    0.00 :   ce897:  mov    0x30(%rbx),%rax
+    0.00 :   ce89b:  mov    $0x7,%edi
+    0.00 :   ce8a0:  lea    0xd8(%rax),%rsi
+    0.00 :   ce8a7:  call   51800 <H5O_msg_reset@plt>
+    0.00 :   ce8ac:  shr    $0x1f,%eax
+    0.00 :   ce8af:  mov    %eax,%r13d
+    0.00 :   ce8b2:  jmp    ce156 <H5D_close+0xf6>
+    0.00 :   ce8b7:  nopw   0x0(%rax,%rax,1)
+    0.00 :   ce8c0:  mov    0x345441(%rip),%rax        # 413d08 <H5E_DATASET_g@@Base-0x25e8>
+    0.00 :   ce8c7:  mov    $0x7af,%ecx
+    0.00 :   ce8cc:  lea    0x25e2a6(%rip),%rsi        # 32cb79 <_fini+0x5cc9>
+    0.00 :   ce8d3:  lea    0x2a624e(%rip),%rdx        # 374b28 <__func__.25>
+    0.00 :   ce8da:  xor    %edi,%edi
+    0.00 :   ce8dc:  mov    $0xffffffff,%r12d
+    0.00 :   ce8e2:  mov    (%rax),%r9
+    0.00 :   ce8e5:  mov    0x345dbc(%rip),%rax        # 4146a8 <H5E_ERR_CLS_g@@Base-0x1d18>
+    0.00 :   ce8ec:  mov    (%rax),%r8
+    0.00 :   ce8ef:  lea    0x25e4df(%rip),%rax        # 32cdd5 <_fini+0x5f25>
+    0.00 :   ce8f6:  push   %rax
+    0.00 :   ce8f7:  mov    0x345512(%rip),%rax        # 413e10 <H5E_CANTRELEASE_g@@Base-0x2378>
+    0.00 :   ce8fe:  push   (%rax)
+    0.00 :   ce900:  xor    %eax,%eax
+    0.00 :   ce902:  call   532a0 <H5E_printf_stack@plt>
+    0.00 :   ce907:  pop    %rcx
+    0.00 :   ce908:  mov    0x30(%rbx),%r14
+    0.00 :   ce90c:  pop    %rsi
+    0.00 :   ce90d:  jmp    ce111 <H5D_close+0xb1>
+    0.00 :   ce912:  mov    0x3453ef(%rip),%rax        # 413d08 <H5E_DATASET_g@@Base-0x25e8>
+    0.00 :   ce919:  mov    $0x7ec,%ecx
+    0.00 :   ce91e:  mov    (%rax),%r9
+    0.00 :   ce921:  mov    0x345d80(%rip),%rax        # 4146a8 <H5E_ERR_CLS_g@@Base-0x1d18>
+    0.00 :   ce928:  mov    (%rax),%r8
+    0.00 :   ce92b:  lea    0x2786ee(%rip),%rax        # 347020 <_fini+0x20170>
+    0.00 :   ce932:  push   %rax
+    0.00 :   ce933:  mov    0x3454d6(%rip),%rax        # 413e10 <H5E_CANTRELEASE_g@@Base-0x2378>
+    0.00 :   ce93a:  push   (%rax)
+    0.00 :   ce93c:  jmp    ce42a <H5D_close+0x3ca>
+    0.00 :   ce941:  nopl   0x0(%rax)
+    0.00 :   ce948:  mov    0x3453b9(%rip),%rax        # 413d08 <H5E_DATASET_g@@Base-0x25e8>
+    0.00 :   ce94f:  mov    $0x791,%ecx
+    0.00 :   ce954:  lea    0x2a61cd(%rip),%rdx        # 374b28 <__func__.25>
+    0.00 :   ce95b:  lea    0x25e217(%rip),%rsi        # 32cb79 <_fini+0x5cc9>
+    0.00 :   ce962:  xor    %edi,%edi
+    0.00 :   ce964:  mov    $0xffffffff,%r12d
+    0.00 :   ce96a:  mov    (%rax),%r9
+    0.00 :   ce96d:  mov    0x345d34(%rip),%rax        # 4146a8 <H5E_ERR_CLS_g@@Base-0x1d18>
+    0.00 :   ce974:  mov    (%rax),%r8
+    0.00 :   ce977:  lea    0x278652(%rip),%rax        # 346fd0 <_fini+0x20120>
+    0.00 :   ce97e:  push   %rax
+    0.00 :   ce97f:  mov    0x3464ca(%rip),%rax        # 414e50 <H5E_CLOSEERROR_g@@Base-0x13e8>
+    0.00 :   ce986:  push   (%rax)
+    0.00 :   ce988:  xor    %eax,%eax
+    0.00 :   ce98a:  call   532a0 <H5E_printf_stack@plt>
+    0.00 :   ce98f:  pop    %r9
+    0.00 :   ce991:  pop    %r10
+    0.00 :   ce993:  jmp    ce27e <H5D_close+0x21e>
+    0.00 :   ce998:  mov    0x346149(%rip),%rax        # 414ae8 <H5E_CACHE_g@@Base-0x17a0>
+    0.00 :   ce99f:  xor    %edi,%edi
+    0.00 :   ce9a1:  mov    $0x7da,%ecx
+    0.00 :   ce9a6:  lea    0x2a617b(%rip),%rdx        # 374b28 <__func__.25>
+    0.00 :   ce9ad:  lea    0x25e1c5(%rip),%rsi        # 32cb79 <_fini+0x5cc9>
+    0.00 :   ce9b4:  mov    $0xffffffff,%r12d
+    0.00 :   ce9ba:  mov    (%rax),%r9
+    0.00 :   ce9bd:  mov    0x345ce4(%rip),%rax        # 4146a8 <H5E_ERR_CLS_g@@Base-0x1d18>
+    0.00 :   ce9c4:  mov    (%rax),%r8
+    0.00 :   ce9c7:  lea    0x2786aa(%rip),%rax        # 347078 <_fini+0x201c8>
+    0.00 :   ce9ce:  push   %rax
+    0.00 :   ce9cf:  mov    0x3464ca(%rip),%rax        # 414ea0 <H5E_CANTFLUSH_g@@Base-0x1180>
+    0.00 :   ce9d6:  push   (%rax)
+    0.00 :   ce9d8:  xor    %eax,%eax
+    0.00 :   ce9da:  call   532a0 <H5E_printf_stack@plt>
+    0.00 :   ce9df:  pop    %rdi
+    0.00 :   ce9e0:  pop    %r8
+    0.00 :   ce9e2:  jmp    ce6b5 <H5D_close+0x655>
+    0.00 :   ce9e7:  lea    0x25e553(%rip),%rax        # 32cf41 <_fini+0x6091>
+    0.00 :   ce9ee:  mov    $0x7f1,%ecx
+    0.00 :   ce9f3:  push   %rax
+    0.00 :   ce9f4:  mov    0x344f75(%rip),%rax        # 413970 <H5E_CANTINIT_g@@Base-0x2828>
+    0.00 :   ce9fb:  push   (%rax)
+    0.00 :   ce9fd:  mov    0x345304(%rip),%rax        # 413d08 <H5E_DATASET_g@@Base-0x25e8>
+    0.00 :   cea04:  mov    (%rax),%r9
+    0.00 :   cea07:  mov    0x345c9a(%rip),%rax        # 4146a8 <H5E_ERR_CLS_g@@Base-0x1d18>
+    0.00 :   cea0e:  mov    (%rax),%r8
+    0.00 :   cea11:  jmp    ce42a <H5D_close+0x3ca>
