@@ -1,0 +1,30 @@
+Threads: 1
+Time: 1.29947
+Speedup: 1.00
+Efficiency: 1.00
+
+Threads: 4
+Time: 0.502732
+Speedup: 2.58
+Efficiency: 0.65
+
+Threads: 8
+Time: 0.466021
+Speedup: 2.79
+Efficiency: 0.35
+
+Threads: 16
+Time: 0.360977
+Speedup: 3.60
+Efficiency: 0.22
+
+Threads: 32
+Time: 0.333942
+Speedup: 3.89
+Efficiency: 0.12
+
+Threads: 64
+Time: 0.292358
+Speedup: 4.44
+Efficiency: 0.07
+
