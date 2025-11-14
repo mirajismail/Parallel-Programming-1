@@ -1,0 +1,6 @@
+Serial time: 1.29947 s
+4 threads: 0.502732 s
+8 threads: 0.466021 s
+16 threads: 0.360977 s
+32 threads: 0.333942 s
+64 threads: 0.292358 s
