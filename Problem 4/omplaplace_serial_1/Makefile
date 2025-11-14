@@ -2,17 +2,11 @@
 #
 # Note: plotting was not required for this assignment, nor was a
 # separate 'boundary' module.
-CXX = g++
-CXXFLAGS = -march=native -O3 -g -fopenmp \
-    -I$(EBROOTRARRAY)/include \
-    -I$(EBROOTNETCDF)/include \
-    -I$(EBROOTNETCDFMINCPLUSPLUS4)/include
-LDFLAGS = -fopenmp\
-    -L$(EBROOTRARRAY)/lib \
-    -L$(EBROOTNETCDF)/lib \
-    -L$(EBROOTNETCDFMINCPLUSPLUS4)/lib
-LDLIBS = -lnetcdf -lnetcdf_c++4
 
+CXX = g++
+CXXFLAGS = -march=native -O3 
+LDFLAGS = 
+LDLIBS = -lnetcdf -lnetcdf_c++4
 
 all: laplace
 
