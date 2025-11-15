@@ -1,0 +1,42 @@
+Running with 1 threads, input=weak1.ini ...
+Checking file: weak1.ini
+L=200000
+T=20000
+N=40000
+p=0.13
+vmax=5
+Running with 2 threads, input=weak2.ini ...
+Checking file: weak2.ini
+L=400000
+T=20000
+N=80000
+p=0.13
+vmax=5
+Running with 4 threads, input=weak4.ini ...
+Checking file: weak4.ini
+L=800000
+T=20000
+N=160000
+p=0.13
+vmax=5
+Running with 8 threads, input=weak8.ini ...
+Checking file: weak8.ini
+L=1600000
+T=20000
+N=320000
+p=0.13
+vmax=5
+Running with 12 threads, input=weak12.ini ...
+Checking file: weak12.ini
+L=2400000
+T=20000
+N=480000
+p=0.13
+vmax=5
+Running with 16 threads, input=weak16.ini ...
+Checking file: weak16.ini
+L=3200000
+T=20000
+N=640000
+p=0.13
+vmax=5

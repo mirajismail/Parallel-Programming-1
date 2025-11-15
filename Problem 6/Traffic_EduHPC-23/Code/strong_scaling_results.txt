@@ -1,0 +1,11 @@
+Strong scaling results
+Using largetest.ini with per=0
+
+Threads   Runtime(s)
+---------------------
+1        107.79
+2        80.39
+4        66.55
+8        59.55
+12        57.63
+16        56.89

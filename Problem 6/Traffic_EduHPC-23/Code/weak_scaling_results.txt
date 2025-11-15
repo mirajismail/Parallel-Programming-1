@@ -1,0 +1,11 @@
+Weak scaling results
+Using proportionally scaled L and N, and per=0
+
+Threads   Runtime(s)
+---------------------
+1        10.38
+2        15.20
+4        24.89
+8        43.90
+12        63.50
+16        82.84
